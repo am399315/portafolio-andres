@@ -16,7 +16,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <div class="nav-logo">A.ESC</div>
+  <div class="nav-logo">AM.</div>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -24,6 +24,7 @@
     <li><a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a></li>
     <li><a href="#habilidades" onclick="closeMenu()">Stack</a></li>
     <li><a href="#proyectos" onclick="closeMenu()">Proyectos</a></li>
+    <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
     <li><a href="#certificados" onclick="closeMenu()">Certificados</a></li>
     <li><a href="#reconocimiento" onclick="closeMenu()">Reconocimiento</a></li>
     <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
@@ -445,7 +446,7 @@
             <span class="project-tag">JavaScript</span><span class="project-tag">CRUD</span>
           </div>
           <div class="project-title">Juego Broma</div>
-          <div class="project-desc">Broma Para pasar el tiempo.</div>
+          <div class="project-desc">Broma para pasar el tiempo.</div>
           <div class="project-footer">
             <a href="https://github.com/am399315" target="_blank" class="project-link gh">Ver en GitHub →</a>
           </div>
@@ -485,6 +486,86 @@
             <a href="https://regalo-sorpresa-five.vercel.app/" target="_blank" class="project-link">🌐 Ver en vivo →</a>
           </div>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="content">
+    <div class="section-header reveal">
+      <span class="section-label">Lo que ofrezco</span>
+      <h2 class="section-title">Servicios</h2>
+    </div>
+    <div class="services-grid reveal">
+
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <div class="service-title">Páginas Web Profesionales</div>
+        <div class="service-desc">Desarrollo sitios web modernos, rápidos y optimizados para negocios, emprendedores y profesionales que quieren presencia en internet.</div>
+        <ul class="service-list">
+          <li>Diseño moderno y responsive</li>
+          <li>Optimización SEO básica</li>
+          <li>Adaptado a móviles y tablets</li>
+          <li>Despliegue en producción</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🛒</div>
+        <div class="service-title">Tiendas & E-commerce</div>
+        <div class="service-desc">Catálogos de productos y tiendas online con integración de contacto vía WhatsApp para recibir pedidos de forma inmediata.</div>
+        <ul class="service-list">
+          <li>Catálogo de productos</li>
+          <li>Integración con WhatsApp</li>
+          <li>Galería de imágenes</li>
+          <li>Formulario de contacto</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <div class="service-title">Landing Pages</div>
+        <div class="service-desc">Páginas de aterrizaje enfocadas en convertir visitantes en clientes. Diseño limpio, llamadas a la acción claras y carga ultrarrápida.</div>
+        <ul class="service-list">
+          <li>Diseño orientado a conversión</li>
+          <li>Carga ultra rápida</li>
+          <li>Integración con redes sociales</li>
+          <li>Formulario de captura</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <div class="service-title">Integración con IA</div>
+        <div class="service-desc">Agrego funcionalidades de inteligencia artificial a sitios web: chatbots, generación de contenido, automatizaciones y más.</div>
+        <ul class="service-list">
+          <li>Chatbots inteligentes</li>
+          <li>Generación de contenido</li>
+          <li>Automatización de tareas</li>
+          <li>APIs de OpenAI</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <div class="service-title">APIs & Backend</div>
+        <div class="service-desc">Desarrollo de APIs REST y soluciones backend con Node.js y Express para conectar tu frontend con bases de datos y servicios externos.</div>
+        <ul class="service-list">
+          <li>APIs REST completas</li>
+          <li>Node.js + Express</li>
+          <li>Conexión a bases de datos</li>
+          <li>Autenticación y seguridad</li>
+        </ul>
+      </div>
+
+      <div class="service-card service-card-cta">
+        <div class="service-icon">💬</div>
+        <div class="service-title">¿Tienes un proyecto?</div>
+        <div class="service-desc">Cuéntame tu idea y te digo cómo puedo ayudarte a hacerla realidad. Respondo rápido.</div>
+        <a href="https://wa.me/18493531975" target="_blank" class="btn-primary" style="margin-top:20px;display:inline-flex;">📱 Escríbeme por WhatsApp</a>
       </div>
 
     </div>
@@ -532,7 +613,7 @@
   <div class="content">
     <div class="section-header reveal">
       <span class="section-label">Reconocimiento oficial</span>
-      <h2 class="section-title">Certificado de <br>Reconocimiento</h2>
+      <h2 class="section-title">Certificado de<br>Reconocimiento</h2>
     </div>
     <div class="carta-wrapper reveal">
       <div class="carta-card" onclick="openLightbox()">
@@ -584,6 +665,13 @@
 <footer>
   <p>Diseñado & desarrollado por <span>Andres Escolastico</span> · 2026</p>
 </footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/18493531975" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
 
 <script src="assets/js/main.js"></script>
 </body>
