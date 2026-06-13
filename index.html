@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Andres Escolastico — Desarrollador Web Full Stack. React, Node.js, APIs REST, IA. La Romana, República Dominicana. Disponible para freelance y trabajo remoto.">
+<meta name="keywords" content="desarrollador web, full stack, React, Node.js, API, República Dominicana, La Romana, freelance">
+<meta property="og:title" content="Andres Escolastico — Desarrollador Web Full Stack">
+<meta property="og:description" content="Construyo desde landing pages hasta APIs REST, sistemas desktop y apps con IA.">
+<meta property="og:type" content="website">
 <title>Andres Escolastico — Desarrollador Web Full Stack</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,59 +16,96 @@
 </head>
 <body>
 
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- Background orbs -->
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
 
-<!-- NAV -->
+<!-- ═══════════════ NAV ═══════════════ -->
 <nav id="navbar">
-  <div class="nav-logo">A.ESC</div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <a href="#" class="nav-logo">A.ESC</a>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a></li>
-    <li><a href="#habilidades" onclick="closeMenu()">Stack</a></li>
-    <li><a href="#proyectos" onclick="closeMenu()">Proyectos</a></li>
-    <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
-    <li><a href="#certificados" onclick="closeMenu()">Certificados</a></li>
-    <li><a href="#reconocimiento" onclick="closeMenu()">Reconocimiento</a></li>
-    <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+    <li><a href="#sobre-mi"      onclick="closeMenu()">Sobre mí</a></li>
+    <li><a href="#habilidades"   onclick="closeMenu()">Stack</a></li>
+    <li><a href="#proyectos"     onclick="closeMenu()">Proyectos</a></li>
+    <li><a href="#servicios"     onclick="closeMenu()">Servicios</a></li>
+    <li><a href="#certificados"  onclick="closeMenu()">Certificados</a></li>
+    <li><a href="#contacto"      onclick="closeMenu()">Contacto</a></li>
+    <li><a href="admin.html" class="nav-admin" onclick="closeMenu()">⚙ Admin</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero-section">
   <div class="hero">
+
     <div class="hero-text">
-      <div class="hero-badge">Disponible para trabajar</div>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Disponible para trabajar
+      </div>
+      <div class="hero-role">
+        <span id="hero-typed">Full Stack Developer</span><span class="typed-cursor"></span>
+      </div>
       <h1>Andres<br><span>Escolastico</span></h1>
       <p class="hero-sub">Desarrollador web full stack & estudiante de Ingeniería de Sistemas. Construyo desde landing pages y e-commerce hasta APIs REST, sistemas desktop y apps con IA.</p>
       <div class="hero-ctas">
-        <a href="#proyectos" class="btn-primary">Ver proyectos →</a>
+        <a href="#proyectos" class="btn-primary">Ver proyectos <span class="btn-arrow">→</span></a>
         <a href="mailto:am399315@gmail.com" class="btn-ghost">✉ Contáctame</a>
       </div>
-    </div>
-    <div class="hero-photo">
-      <div class="photo-frame">
-        <img id="profile-photo" src="assets/img/profile/yo.png" alt="Andres Escolastico">
-        <div class="photo-tag"><strong>La Romana</strong>, República Dominicana</div>
+      <div class="hero-social">
+        <a href="https://github.com/am399315" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+        </a>
+        <a href="https://wa.me/18493531975" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="mailto:am399315@gmail.com" class="social-link" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
       </div>
     </div>
+
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img id="profile-photo" src="assets/img/profile/yo.png" alt="Andres Escolastico — Desarrollador Web">
+        <div class="photo-tag"><strong>La Romana</strong>, República Dominicana</div>
+        <div class="photo-chip photo-chip-1">
+          <span class="photo-chip-num">12+</span>
+          <span class="photo-chip-label">Proyectos</span>
+        </div>
+        <div class="photo-chip photo-chip-2">
+          <span class="photo-chip-num">2+</span>
+          <span class="photo-chip-label">Años exp.</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- STATS -->
+<!-- ═══════════════ STATS ═══════════════ -->
 <div class="stats-wrapper">
   <div class="stats-bar reveal">
-    <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Proyectos</div></div>
-    <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Tecnologías</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Certificados</div></div>
-    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Apps en vivo</div></div>
-    <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Años exp.</div></div>
+    <div class="stat"><span class="stat-num" data-count="12" data-suffix="+">0</span><div class="stat-label">Proyectos</div></div>
+    <div class="stat"><span class="stat-num" data-count="8"  data-suffix="+">0</span><div class="stat-label">Tecnologías</div></div>
+    <div class="stat"><span class="stat-num" data-count="3"              >0</span><div class="stat-label">Certificados</div></div>
+    <div class="stat"><span class="stat-num" data-count="10"             >0</span><div class="stat-label">Apps en vivo</div></div>
+    <div class="stat"><span class="stat-num" data-count="2"  data-suffix="+">0</span><div class="stat-label">Años exp.</div></div>
   </div>
 </div>
 
-<!-- SOBRE MÍ -->
+<!-- ═══════════════ SOBRE MÍ ═══════════════ -->
 <section id="sobre-mi">
   <div class="content">
     <div class="section-header reveal">
@@ -116,7 +158,7 @@
   </div>
 </section>
 
-<!-- EXPERIENCIA & EDUCACIÓN -->
+<!-- ═══════════════ EXPERIENCIA & EDUCACIÓN ═══════════════ -->
 <section id="experiencia">
   <div class="content">
     <div class="section-header reveal">
@@ -125,7 +167,6 @@
     </div>
     <div class="timeline-grid reveal">
 
-      <!-- EXPERIENCIA -->
       <div class="timeline-col">
         <div class="timeline-col-title">💼 Experiencia Laboral</div>
 
@@ -161,7 +202,6 @@
         </div>
       </div>
 
-      <!-- EDUCACIÓN -->
       <div class="timeline-col">
         <div class="timeline-col-title">🎓 Educación</div>
 
@@ -199,7 +239,7 @@
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ═══════════════ HABILIDADES ═══════════════ -->
 <section id="habilidades">
   <div class="content">
     <div class="section-header reveal">
@@ -207,7 +247,9 @@
       <h2 class="section-title">Habilidades &<br>Tecnologías</h2>
     </div>
     <div class="skills-grid reveal">
+
       <div class="skill-category">
+        <div class="skill-cat-icon">🎨</div>
         <div class="skill-cat-title">Frontend</div>
         <div class="skill-tags">
           <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span>
@@ -216,7 +258,9 @@
           <span class="skill-tag">SEO técnico</span>
         </div>
       </div>
+
       <div class="skill-category">
+        <div class="skill-cat-icon">⚙️</div>
         <div class="skill-cat-title">Backend & APIs</div>
         <div class="skill-tags">
           <span class="skill-tag">Node.js</span><span class="skill-tag">Express</span>
@@ -224,14 +268,18 @@
           <span class="skill-tag">REST APIs</span><span class="skill-tag">SQL</span>
         </div>
       </div>
+
       <div class="skill-category">
+        <div class="skill-cat-icon">🖥️</div>
         <div class="skill-cat-title">Desktop & Frameworks</div>
         <div class="skill-tags">
           <span class="skill-tag">Electron.js</span><span class="skill-tag">Pygame</span>
           <span class="skill-tag">React</span><span class="skill-tag">Vanilla JS</span>
         </div>
       </div>
+
       <div class="skill-category">
+        <div class="skill-cat-icon">🤖</div>
         <div class="skill-cat-title">IA & Herramientas</div>
         <div class="skill-tags">
           <span class="skill-tag">OpenAI API</span><span class="skill-tag">DALL·E 3</span>
@@ -239,7 +287,9 @@
           <span class="skill-tag">Marketing Digital IA</span>
         </div>
       </div>
+
       <div class="skill-category">
+        <div class="skill-cat-icon">🛠️</div>
         <div class="skill-cat-title">DevOps & Tools</div>
         <div class="skill-tags">
           <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span>
@@ -247,7 +297,9 @@
           <span class="skill-tag">Linux</span><span class="skill-tag">npm</span>
         </div>
       </div>
+
       <div class="skill-category">
+        <div class="skill-cat-icon">🔒</div>
         <div class="skill-cat-title">Ciberseguridad & Redes</div>
         <div class="skill-tags">
           <span class="skill-tag">Hacking Ético</span><span class="skill-tag">Nmap/Zenmap</span>
@@ -255,11 +307,12 @@
           <span class="skill-tag">ISO 27001</span><span class="skill-tag">TIA-942</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ═══════════════ PROYECTOS ═══════════════ -->
 <section id="proyectos">
   <div class="content">
     <div class="section-header reveal">
@@ -278,7 +331,8 @@
 
       <div class="project-card" data-cat="frontend">
         <div class="project-banner">
-          <img data-img="boutique" src="assets/img/projects/boutique.png" alt="El Elyon Boutique">
+          <img data-img="boutique" src="assets/img/projects/boutique.png" alt="El Elyon Boutique" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">E-commerce</span>
         </div>
         <div class="project-body">
@@ -288,15 +342,16 @@
           <div class="project-title">Super Boutique El-Elyon</div>
           <div class="project-desc">Sitio web profesional para boutique de moda. Diseño moderno, responsive y optimizado para SEO. Indexado en Google Search Console.</div>
           <div class="project-footer">
-            <a href="https://el-elyon-boutique.vercel.app/" target="_blank" class="project-link">🌐 Ver en vivo →</a>
-            <a href="https://github.com/am399315/megaboutique" target="_blank" class="project-link gh">GitHub</a>
+            <a href="https://el-elyon-boutique.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>
+            <a href="https://github.com/am399315/megaboutique" target="_blank" rel="noopener" class="project-link gh">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="frontend">
         <div class="project-banner">
-          <img data-img="honda" src="assets/img/projects/honda.png" alt="Honda Civic">
+          <img data-img="honda" src="assets/img/projects/honda.png" alt="Honda Civic 2013" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Landing Page</span>
         </div>
         <div class="project-body">
@@ -306,15 +361,16 @@
           <div class="project-title">Honda Civic 2013 EXL</div>
           <div class="project-desc">Sitio web moderno y elegante dedicado a un Honda Civic 2013 EXL gris plateado. Galería visual y especificaciones técnicas.</div>
           <div class="project-footer">
-            <a href="https://honda-civic-2013-web.vercel.app/" target="_blank" class="project-link">🌐 Ver en vivo →</a>
-            <a href="https://github.com/am399315/honda-civic-2013-web" target="_blank" class="project-link gh">GitHub</a>
+            <a href="https://honda-civic-2013-web.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>
+            <a href="https://github.com/am399315/honda-civic-2013-web" target="_blank" rel="noopener" class="project-link gh">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="frontend">
         <div class="project-banner">
-          <img data-img="hotel" src="assets/img/projects/hotel.png" alt="Hotel Esco Brea">
+          <img data-img="hotel" src="assets/img/projects/hotel.png" alt="Hotel Esco Brea" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Hospitality</span>
         </div>
         <div class="project-body">
@@ -324,15 +380,16 @@
           <div class="project-title">Hotel Esco Brea — Punta Cana</div>
           <div class="project-desc">Página web completa para hotel en Punta Cana, RD. Sin frameworks externos, siguiendo buenas prácticas de frontend puro.</div>
           <div class="project-footer">
-            <a href="https://hotel-esco-brea.vercel.app/" target="_blank" class="project-link">🌐 Ver en vivo →</a>
-            <a href="https://github.com/am399315/hotel-esco-brea" target="_blank" class="project-link gh">GitHub</a>
+            <a href="https://hotel-esco-brea.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>
+            <a href="https://github.com/am399315/hotel-esco-brea" target="_blank" rel="noopener" class="project-link gh">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="system">
         <div class="project-banner">
-          <img data-img="policial" src="assets/img/projects/policial.png" alt="Sistema Policial">
+          <img data-img="policial" src="assets/img/projects/policial.png" alt="Sistema Policial RD" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Desktop App</span>
         </div>
         <div class="project-body">
@@ -342,14 +399,15 @@
           <div class="project-title">Sistema de Gestión Policial — RD</div>
           <div class="project-desc">App de escritorio con Electron.js para la Policía Nacional RD. Gestión de casos, detenidos, patrullas, incidentes y estadísticas avanzadas.</div>
           <div class="project-footer">
-            <a href="https://github.com/am399315/sistema-policial-rd" target="_blank" class="project-link gh">Ver en GitHub →</a>
+            <a href="https://github.com/am399315/sistema-policial-rd" target="_blank" rel="noopener" class="project-link gh">Ver en GitHub →</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="ai">
         <div class="project-banner">
-          <img data-img="historias-ia" src="assets/img/projects/historias-ia.png" alt="Generador IA">
+          <img data-img="historias-ia" src="assets/img/projects/historias-ia.png" alt="Generador de Historias IA" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">IA Generativa</span>
         </div>
         <div class="project-body">
@@ -357,16 +415,17 @@
             <span class="project-tag">OpenAI</span><span class="project-tag">DALL·E 3</span><span class="project-tag">TTS</span>
           </div>
           <div class="project-title">Generador de Historias con IA</div>
-          <div class="project-desc">Combina LLM, DALL·E 3 e síntesis de voz para crear historias ilustradas narradas con música de fondo sincronizada.</div>
+          <div class="project-desc">Combina LLM, DALL·E 3 y síntesis de voz para crear historias ilustradas narradas con música de fondo sincronizada.</div>
           <div class="project-footer">
-            <a href="https://github.com/am399315/Proyecto-Final-IA" target="_blank" class="project-link gh">Ver en GitHub →</a>
+            <a href="https://github.com/am399315/Proyecto-Final-IA" target="_blank" rel="noopener" class="project-link gh">Ver en GitHub →</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="frontend">
         <div class="project-banner">
-          <img data-img="tablero" src="assets/img/projects/tablero.png" alt="Tablero O&M">
+          <img data-img="tablero" src="assets/img/projects/tablero.png" alt="Tablero O&M" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Dashboard</span>
         </div>
         <div class="project-body">
@@ -376,15 +435,16 @@
           <div class="project-title">Tablero de Anuncios — O&M</div>
           <div class="project-desc">Aplicación React para la comunidad universitaria de O&M. Anuncios digitales en tiempo real para estudiantes y docentes.</div>
           <div class="project-footer">
-            <a href="https://tablero-anuncios-oym.vercel.app/" target="_blank" class="project-link">🌐 Ver en vivo →</a>
-            <a href="https://github.com/am399315/tablero_anuncios_oym" target="_blank" class="project-link gh">GitHub</a>
+            <a href="https://tablero-anuncios-oym.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>
+            <a href="https://github.com/am399315/tablero_anuncios_oym" target="_blank" rel="noopener" class="project-link gh">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="backend">
         <div class="project-banner">
-          <img data-img="task-api" src="assets/img/projects/task-api.png" alt="Task API">
+          <img data-img="task-api" src="assets/img/projects/task-api.png" alt="Task Manager API" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Backend</span>
         </div>
         <div class="project-body">
@@ -394,15 +454,16 @@
           <div class="project-title">Task Manager API — REST</div>
           <div class="project-desc">API RESTful para gestión de tareas con CRUD completo. Construida con Node.js y Express siguiendo principios RESTful.</div>
           <div class="project-footer">
-            <a href="https://task-api-woad.vercel.app/" target="_blank" class="project-link">🌐 Ver en vivo →</a>
-            <a href="https://github.com/am399315/task-api" target="_blank" class="project-link gh">GitHub</a>
+            <a href="https://task-api-woad.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>
+            <a href="https://github.com/am399315/task-api" target="_blank" rel="noopener" class="project-link gh">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="game">
         <div class="project-banner">
-          <img data-img="urban" src="assets/img/projects/urban.png" alt="Urban Collection">
+          <img data-img="urban" src="assets/img/projects/urban.png" alt="Urban Collection" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Videojuego</span>
         </div>
         <div class="project-body">
@@ -412,14 +473,15 @@
           <div class="project-title">Urban Collection — Juego 2D</div>
           <div class="project-desc">Juego de laberinto 2D con Pygame. Recolecta monedas, evita enemigos inteligentes y supera rondas con dificultad progresiva.</div>
           <div class="project-footer">
-            <a href="https://github.com/am399315/Urban_Collection" target="_blank" class="project-link gh">Ver en GitHub →</a>
+            <a href="https://github.com/am399315/Urban_Collection" target="_blank" rel="noopener" class="project-link gh">Ver en GitHub →</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="frontend">
         <div class="project-banner">
-          <img data-img="prank" src="assets/img/projects/prank.png" alt="Prank Suite">
+          <img data-img="prank" src="assets/img/projects/prank.png" alt="Prank Web Suite" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Creative</span>
         </div>
         <div class="project-body">
@@ -429,33 +491,17 @@
           <div class="project-title">Prank Web Suite</div>
           <div class="project-desc">Colección de apps interactivas: terminal hacker, pantalla rota, broma WhatsApp y juego imposible. Cada una deployada en Vercel.</div>
           <div class="project-footer">
-            <a href="https://hacker-simulator-eight.vercel.app/" target="_blank" class="project-link">🌐 Hacker →</a>
-            <a href="https://broma-whatsapp.vercel.app/" target="_blank" class="project-link">💬 WhatsApp →</a>
-            <a href="https://juego-gratis.vercel.app/" target="_blank" class="project-link">🎮 Juego →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-cat="backend">
-        <div class="project-banner">
-          <img data-img="todo-app" src="assets/img/projects/todo-app.png" alt="Todo App">
-          <span class="cat-pill">App</span>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">JavaScript</span><span class="project-tag">CRUD</span>
-          </div>
-          <div class="project-title">Juego Broma</div>
-          <div class="project-desc">Broma para pasar el tiempo.</div>
-          <div class="project-footer">
-            <a href="https://github.com/am399315" target="_blank" class="project-link gh">Ver en GitHub →</a>
+            <a href="https://hacker-simulator-eight.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Hacker →</a>
+            <a href="https://broma-whatsapp.vercel.app/" target="_blank" rel="noopener" class="project-link">💬 WA →</a>
+            <a href="https://juego-gratis.vercel.app/" target="_blank" rel="noopener" class="project-link">🎮 Juego →</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="frontend">
         <div class="project-banner">
-          <img data-img="portafolio-reimin" src="assets/img/projects/portafolio-reimin.png" alt="Portafolio Reimin">
+          <img data-img="portafolio-reimin" src="assets/img/projects/portafolio-reimin.png" alt="Portafolio Reimin" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Portafolio</span>
         </div>
         <div class="project-body">
@@ -465,15 +511,16 @@
           <div class="project-title">Portafolio — Reimin de los Santos</div>
           <div class="project-desc">Portafolio web personal desarrollado para la asignatura de Fundamentos de Seguridad Informática en la Universidad O&M.</div>
           <div class="project-footer">
-            <a href="https://portafolio-digital-flame.vercel.app/" target="_blank" class="project-link">🌐 Ver en vivo →</a>
-            <a href="https://github.com/am399315/portafolio-digital" target="_blank" class="project-link gh">GitHub</a>
+            <a href="https://portafolio-digital-flame.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>
+            <a href="https://github.com/am399315/portafolio-digital" target="_blank" rel="noopener" class="project-link gh">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-cat="frontend">
         <div class="project-banner">
-          <img data-img="regalo" src="assets/img/projects/regalo.png" alt="Regalo Sorpresa">
+          <img data-img="regalo" src="assets/img/projects/regalo.png" alt="Regalo Sorpresa" loading="lazy">
+          <div class="project-banner-overlay"></div>
           <span class="cat-pill">Creative</span>
         </div>
         <div class="project-body">
@@ -483,7 +530,7 @@
           <div class="project-title">Regalo Sorpresa</div>
           <div class="project-desc">Experiencia web interactiva y creativa con animaciones JavaScript. Proyecto visual deployado en Vercel.</div>
           <div class="project-footer">
-            <a href="https://regalo-sorpresa-five.vercel.app/" target="_blank" class="project-link">🌐 Ver en vivo →</a>
+            <a href="https://regalo-sorpresa-five.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>
           </div>
         </div>
       </div>
@@ -492,7 +539,7 @@
   </div>
 </section>
 
-<!-- SERVICIOS -->
+<!-- ═══════════════ SERVICIOS ═══════════════ -->
 <section id="servicios">
   <div class="content">
     <div class="section-header reveal">
@@ -565,50 +612,31 @@
         <div class="service-icon">💬</div>
         <div class="service-title">¿Tienes un proyecto?</div>
         <div class="service-desc">Cuéntame tu idea y te digo cómo puedo ayudarte a hacerla realidad. Respondo rápido.</div>
-        <a href="https://wa.me/18493531975" target="_blank" class="btn-primary" style="margin-top:20px;display:inline-flex;">📱 Escríbeme por WhatsApp</a>
+        <a href="https://wa.me/18493531975" target="_blank" rel="noopener" class="btn-primary" style="margin-top:20px;display:inline-flex;">
+          📱 Escríbeme por WhatsApp
+        </a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- CERTIFICATES -->
+<!-- ═══════════════ CERTIFICADOS ═══════════════ -->
 <section id="certificados">
   <div class="content">
     <div class="section-header reveal">
       <span class="section-label">Formación continua</span>
       <h2 class="section-title">Certificados<br>& Cursos</h2>
     </div>
-    <div class="certs-img-grid reveal">
-      <div class="cert-img-card">
-        <img data-cert="cert-ia" src="assets/img/certificates/cert-ia.png" alt="Certificado Desarrollo con IA">
-        <div class="cert-img-body">
-          <div class="cert-img-issuer">BIG School</div>
-          <div class="cert-img-name">Iniciación al Desarrollo con IA</div>
-          <div class="cert-img-meta"><span>📅 Oct 2025</span><span>⏱ 6 hrs</span></div>
-        </div>
-      </div>
-      <div class="cert-img-card">
-        <img data-cert="cert-marketing" src="assets/img/certificates/cert-marketing.png" alt="Certificado Marketing Digital">
-        <div class="cert-img-body">
-          <div class="cert-img-issuer">BIG School · BIGSEO</div>
-          <div class="cert-img-name">Marketing Digital con IA: Estrategia y Visibilidad</div>
-          <div class="cert-img-meta"><span>📅 Abr 2026</span><span>⏱ 6 hrs</span></div>
-        </div>
-      </div>
-      <div class="cert-img-card">
-        <img data-cert="cert-ciberseguridad" src="assets/img/certificates/cert-ciberseguridad.png" alt="Certificado Ciberseguridad">
-        <div class="cert-img-body">
-          <div class="cert-img-issuer">BIG School</div>
-          <div class="cert-img-name">Ciberseguridad y Hacking Ético</div>
-          <div class="cert-img-meta"><span>📅 Abr 2026</span><span>⏱ 6 hrs</span></div>
-        </div>
-      </div>
+    <!-- Rendered dynamically by main.js from localStorage -->
+    <div class="certs-img-grid" id="certs-container">
+      <!-- Loading state -->
+      <div style="text-align:center;padding:40px;color:var(--muted);">Cargando certificados...</div>
     </div>
   </div>
 </section>
 
-<!-- CARTA DE RECONOCIMIENTO -->
+<!-- ═══════════════ CARTA DE RECONOCIMIENTO ═══════════════ -->
 <section id="reconocimiento">
   <div class="content">
     <div class="section-header reveal">
@@ -616,7 +644,7 @@
       <h2 class="section-title">Certificado de<br>Reconocimiento</h2>
     </div>
     <div class="carta-wrapper reveal">
-      <div class="carta-card" onclick="openLightbox()">
+      <div class="carta-card" onclick="openLightbox('assets/img/carta-tabacalera.jpeg','Carta Empleado Más Destacado — Tabacalera de Garcia')">
         <div class="carta-img-wrap">
           <img src="assets/img/carta-tabacalera.jpeg" alt="Carta Empleado Más Destacado — Tabacalera de Garcia">
           <div class="carta-overlay">
@@ -638,13 +666,14 @@
   </div>
 </section>
 
-<!-- LIGHTBOX -->
+<!-- ═══════════════ LIGHTBOX ═══════════════ -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <div class="lightbox-close" onclick="closeLightbox()">✕</div>
-  <img src="assets/img/carta-tabacalera.jpeg" alt="Carta Tabacalera" class="lightbox-img">
+  <div class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</div>
+  <img src="" alt="" id="lightbox-img" class="lightbox-img" onclick="event.stopPropagation()">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
-<!-- CONTACT -->
+<!-- ═══════════════ CONTACTO ═══════════════ -->
 <section id="contacto">
   <div class="content">
     <div class="contact-box reveal">
@@ -652,26 +681,29 @@
       <p>Abierto a oportunidades laborales, freelance y colaboraciones. Escríbeme y te respondo rápido.</p>
       <div class="contact-links">
         <a href="mailto:am399315@gmail.com" class="contact-link cl-email">✉ am399315@gmail.com</a>
-        <a href="https://github.com/am399315" target="_blank" class="contact-link cl-github">
+        <a href="https://github.com/am399315" target="_blank" rel="noopener" class="contact-link cl-github">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
           GitHub
         </a>
-        <a href="https://wa.me/18493531975" target="_blank" class="contact-link cl-wa">📱 WhatsApp</a>
+        <a href="https://wa.me/18493531975" target="_blank" rel="noopener" class="contact-link cl-wa">📱 WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>Diseñado & desarrollado por <span>Andres Escolastico</span> · 2026</p>
+  <span>Diseñado & desarrollado por</span>&nbsp;<span>Andres Escolastico</span>&nbsp;·&nbsp;2026
 </footer>
 
-<!-- WHATSAPP FLOTANTE -->
-<a href="https://wa.me/18493531975" target="_blank" class="wa-float" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/18493531975" target="_blank" rel="noopener" class="wa-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
+
+<!-- Back to top -->
+<button class="back-top" id="back-top" aria-label="Volver arriba">↑</button>
 
 <script src="assets/js/main.js"></script>
 </body>
