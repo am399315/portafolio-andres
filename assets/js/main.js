@@ -159,11 +159,11 @@ document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(
 
 // ── TYPING ANIMATION ──
 const TYPED_STRINGS = [
+  'Ing. en Sistemas',
   'Full Stack Developer',
-  'React & Node.js',
-  'API & Backend Dev',
-  'AI Integration',
-  'UI/UX Enthusiast',
+  'React & Node.js Dev',
+  'Backend · APIs · REST',
+  'AI Integration Dev',
   'Open to Work 🚀'
 ];
 let typedIndex = 0, charIndex = 0, isDeleting = false;
@@ -307,6 +307,105 @@ if (backTop) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+// ── TERMINAL ANIMATION ──
+function initTerminal() {
+  const body = document.getElementById('t-body');
+  if (!body) return;
+
+  const sequence = [
+    { type: 'cmd', text: 'cat profile.json' },
+    { type: 'out', html: '<span class="t-out">{</span>' },
+    { type: 'out', html: '  <span class="t-key">"name"</span><span class="t-out">:     </span><span class="t-str">"Andres Escolastico"</span><span class="t-out">,</span>' },
+    { type: 'out', html: '  <span class="t-key">"role"</span><span class="t-out">:     </span><span class="t-str">"Ing. Sistemas · Full Stack Dev"</span><span class="t-out">,</span>' },
+    { type: 'out', html: '  <span class="t-key">"location"</span><span class="t-out">:  </span><span class="t-str">"La Romana, República Dominicana 🇩🇴"</span><span class="t-out">,</span>' },
+    { type: 'out', html: '  <span class="t-key">"stack"</span><span class="t-out">:    [</span><span class="t-str">"React"</span><span class="t-out">, </span><span class="t-str">"Node.js"</span><span class="t-out">, </span><span class="t-str">"Python"</span><span class="t-out">, </span><span class="t-str">"Electron"</span><span class="t-out">],</span>' },
+    { type: 'out', html: '  <span class="t-key">"status"</span><span class="t-out">:   </span><span class="t-val">"open_to_work ✅"</span>' },
+    { type: 'out', html: '<span class="t-out">}</span>' },
+    { type: 'blank' },
+    { type: 'cmd', text: 'git log --oneline -3' },
+    { type: 'out', html: '<span class="t-hash">e055efa</span> <span class="t-out">fix: mobile responsiveness &amp; iOS fixes</span>' },
+    { type: 'out', html: '<span class="t-hash">8b6f6be</span> <span class="t-out">feat: portfolio redesign con animaciones</span>' },
+    { type: 'out', html: '<span class="t-hash">f5f2674</span> <span class="t-out">feat: servicios + WhatsApp flotante</span>' },
+    { type: 'blank' },
+    { type: 'cmd', text: 'echo $AVAILABILITY' },
+    { type: 'out', html: '<span class="t-val">ready_to_build 🚀</span>' },
+  ];
+
+  let lineIndex = 0;
+
+  function addLine(html) {
+    const div = document.createElement('div');
+    div.className = 't-line';
+    div.innerHTML = html;
+    body.appendChild(div);
+  }
+
+  function processNext() {
+    if (lineIndex >= sequence.length) {
+      addLine('<span class="t-prompt">❯</span> <span class="t-blink"></span>');
+      // Loop after a pause
+      setTimeout(() => {
+        body.style.opacity = '0';
+        setTimeout(() => {
+          body.innerHTML = '';
+          body.style.opacity = '1';
+          lineIndex = 0;
+          setTimeout(processNext, 600);
+        }, 500);
+      }, 7000);
+      return;
+    }
+
+    const item = sequence[lineIndex++];
+
+    if (item.type === 'blank') {
+      addLine('&nbsp;');
+      setTimeout(processNext, 60);
+      return;
+    }
+
+    if (item.type === 'cmd') {
+      const div = document.createElement('div');
+      div.className = 't-line';
+      div.innerHTML = '<span class="t-prompt">❯</span> <span class="t-cmd-text"></span><span class="t-caret">█</span>';
+      body.appendChild(div);
+
+      const textSpan = div.querySelector('.t-cmd-text');
+      const caret    = div.querySelector('.t-caret');
+      let ci = 0;
+
+      function typeChar() {
+        if (ci <= item.text.length) {
+          textSpan.textContent = item.text.slice(0, ci++);
+          setTimeout(typeChar, 52);
+        } else {
+          caret.remove();
+          setTimeout(processNext, 320);
+        }
+      }
+      setTimeout(typeChar, 180);
+      return;
+    }
+
+    addLine(item.html);
+    setTimeout(processNext, 85);
+  }
+
+  // Start when terminal is visible
+  const termWin = document.querySelector('.terminal-window');
+  if (!termWin) return;
+
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      setTimeout(processNext, 700);
+      obs.disconnect();
+    }
+  }, { threshold: 0.25 });
+  obs.observe(termWin);
+}
+
+initTerminal();
 
 // ── INIT ──
 loadAdminData();
