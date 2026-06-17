@@ -2,6 +2,21 @@
    ANDRES ESCOLASTICO — PORTFOLIO SCRIPTS
    ══════════════════════════════════════════ */
 
+// ── DEFAULT PROJECTS (shown before any admin edit) ──
+const DEFAULT_PROJECTS = [
+  { id:'proj-boutique',          title:'Super Boutique El-Elyon',            desc:'Sitio web profesional para boutique de moda. Diseño moderno, responsive y optimizado para SEO. Indexado en Google Search Console.',                             tags:['HTML5','CSS3','JavaScript'],          cat:'frontend', pill:'E-commerce',   live:'https://el-elyon-boutique.vercel.app/',        github:'https://github.com/am399315/megaboutique',         image:'assets/img/projects/boutique.png' },
+  { id:'proj-honda',             title:'Honda Civic 2013 EXL',               desc:'Sitio web moderno y elegante dedicado a un Honda Civic 2013 EXL gris plateado. Galería visual y especificaciones técnicas.',                                   tags:['HTML5','CSS3','JavaScript'],          cat:'frontend', pill:'Landing Page', live:'https://honda-civic-2013-web.vercel.app/',      github:'https://github.com/am399315/honda-civic-2013-web', image:'assets/img/projects/honda.png' },
+  { id:'proj-hotel',             title:'Hotel Esco Brea — Punta Cana',       desc:'Página web completa para hotel en Punta Cana, RD. Sin frameworks externos, siguiendo buenas prácticas de frontend puro.',                                      tags:['HTML5','CSS3','JavaScript'],          cat:'frontend', pill:'Hospitality',  live:'https://hotel-esco-brea.vercel.app/',           github:'https://github.com/am399315/hotel-esco-brea',      image:'assets/img/projects/hotel.png' },
+  { id:'proj-policial',          title:'Sistema de Gestión Policial — RD',   desc:'App de escritorio con Electron.js para la Policía Nacional RD. Gestión de casos, detenidos, patrullas, incidentes y estadísticas avanzadas.',                  tags:['Electron.js','JavaScript','CSS3'],    cat:'system',   pill:'Desktop App', live:'',                                              github:'https://github.com/am399315/sistema-policial-rd',  image:'assets/img/projects/policial.png' },
+  { id:'proj-historias-ia',      title:'Generador de Historias con IA',      desc:'Combina LLM, DALL·E 3 y síntesis de voz para crear historias ilustradas narradas con música de fondo sincronizada.',                                           tags:['OpenAI','DALL·E 3','TTS'],            cat:'ai',       pill:'IA Generativa',live:'',                                              github:'https://github.com/am399315/Proyecto-Final-IA',    image:'assets/img/projects/historias-ia.png' },
+  { id:'proj-tablero',           title:'Tablero de Anuncios — O&M',          desc:'Aplicación React para la comunidad universitaria de O&M. Anuncios digitales en tiempo real para estudiantes y docentes.',                                       tags:['React','JavaScript'],                 cat:'frontend', pill:'Dashboard',    live:'https://tablero-anuncios-oym.vercel.app/',      github:'https://github.com/am399315/tablero_anuncios_oym', image:'assets/img/projects/tablero.png' },
+  { id:'proj-task-api',          title:'Task Manager API — REST',             desc:'API RESTful para gestión de tareas con CRUD completo. Construida con Node.js y Express siguiendo principios RESTful.',                                          tags:['Node.js','Express','REST API'],       cat:'backend',  pill:'Backend',      live:'https://task-api-woad.vercel.app/',             github:'https://github.com/am399315/task-api',             image:'assets/img/projects/task-api.png' },
+  { id:'proj-urban',             title:'Urban Collection — Juego 2D',        desc:'Juego de laberinto 2D con Pygame. Recolecta monedas, evita enemigos inteligentes y supera rondas con dificultad progresiva.',                                   tags:['Python','Pygame'],                    cat:'game',     pill:'Videojuego',   live:'',                                              github:'https://github.com/am399315/Urban_Collection',     image:'assets/img/projects/urban.png' },
+  { id:'proj-prank',             title:'Prank Web Suite',                     desc:'Colección de apps interactivas: terminal hacker, pantalla rota, broma WhatsApp y juego imposible. Cada una deployada en Vercel.',                              tags:['HTML5','CSS3','JavaScript'],          cat:'frontend', pill:'Creative',     live:'https://hacker-simulator-eight.vercel.app/',    github:'',                                                 image:'assets/img/projects/prank.png' },
+  { id:'proj-portafolio-reimin', title:'Portafolio — Reimin de los Santos',  desc:'Portafolio web personal desarrollado para la asignatura de Fundamentos de Seguridad Informática en la Universidad O&M.',                                      tags:['HTML5','CSS3','JavaScript'],          cat:'frontend', pill:'Portafolio',   live:'https://portafolio-digital-flame.vercel.app/',  github:'https://github.com/am399315/portafolio-digital',   image:'assets/img/projects/portafolio-reimin.png' },
+  { id:'proj-regalo',            title:'Regalo Sorpresa',                     desc:'Experiencia web interactiva y creativa con animaciones JavaScript. Proyecto visual deployado en Vercel.',                                                       tags:['HTML5','CSS3','JavaScript'],          cat:'frontend', pill:'Creative',     live:'https://regalo-sorpresa-five.vercel.app/',      github:'',                                                 image:'assets/img/projects/regalo.png' },
+];
+
 // ── DEFAULT CERTIFICATES (shown before any admin edit) ──
 const DEFAULT_CERTS = [
   {
@@ -33,10 +48,11 @@ const DEFAULT_CERTS = [
   }
 ];
 
-// ── LOAD ADMIN DATA & RENDER CERTS ──
+// ── LOAD ADMIN DATA & RENDER ──
 function loadAdminData() {
   const saved = localStorage.getItem('am_admin_state');
   if (!saved) {
+    renderProjects(DEFAULT_PROJECTS);
     renderCerts(DEFAULT_CERTS);
     return;
   }
@@ -48,17 +64,63 @@ function loadAdminData() {
     if (img) img.src = state.photo;
   }
 
-  // Project images (legacy key-value format)
-  if (state.projects) {
-    Object.keys(state.projects).forEach(key => {
-      const el = document.querySelector(`[data-img="${key}"]`);
-      if (el) el.src = state.projects[key];
-    });
+  // Projects — new projectsList format with fallback + migration from old image-map format
+  let projects;
+  if (state.projectsList && state.projectsList.length > 0) {
+    projects = state.projectsList;
+  } else {
+    projects = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
+    if (state.projects) {
+      projects.forEach(p => {
+        const key = p.id.replace('proj-', '');
+        if (state.projects[key]) p.image = state.projects[key];
+      });
+    }
   }
+  renderProjects(projects);
 
-  // Certificates (new certsList array format)
+  // Certificates
   const certs = (state.certsList && state.certsList.length > 0) ? state.certsList : DEFAULT_CERTS;
   renderCerts(certs);
+}
+
+// ── RENDER PROJECTS ──
+function renderProjects(projects) {
+  const grid = document.getElementById('projects-grid');
+  if (!grid) return;
+
+  grid.innerHTML = projects.map(p => {
+    const tags = Array.isArray(p.tags) ? p.tags : String(p.tags || '').split(',').map(t => t.trim()).filter(Boolean);
+    const tagsHtml = tags.map(t => `<span class="project-tag">${t}</span>`).join('');
+    return `
+      <div class="project-card" data-cat="${p.cat || 'frontend'}">
+        <div class="project-banner">
+          <img src="${p.image || ''}" alt="${p.title}" loading="lazy">
+          <div class="project-banner-overlay"></div>
+          ${p.live ? '<span class="live-badge">● En vivo</span>' : ''}
+          <span class="cat-pill">${p.pill || ''}</span>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">${tagsHtml}</div>
+          <div class="project-title">${p.title}</div>
+          <div class="project-desc">${p.desc || ''}</div>
+          <div class="project-footer">
+            ${p.live   ? `<a href="${p.live}"   target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>` : ''}
+            ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener" class="project-link gh">GitHub</a>`        : ''}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Cursor hover for new cards
+  const cd = document.getElementById('cursor-dot');
+  const cr = document.getElementById('cursor-ring');
+  if (cd && cr) {
+    grid.querySelectorAll('.project-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { cd.classList.add('cursor-hover'); cr.classList.add('cursor-hover'); });
+      el.addEventListener('mouseleave', () => { cd.classList.remove('cursor-hover'); cr.classList.remove('cursor-hover'); });
+    });
+  }
 }
 
 function renderCerts(certs) {
@@ -242,18 +304,15 @@ window.addEventListener('scroll', () => {
   progressBar.style.transform = `scaleX(${pct})`;
 }, { passive: true });
 
-// ── FILTER TABS ──
-const filterBtns = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.project-card[data-cat]');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const f = btn.dataset.filter;
-    cards.forEach(card => {
-      const show = f === 'all' || card.dataset.cat === f;
-      card.classList.toggle('hidden', !show);
-    });
+// ── FILTER TABS (event delegation — funciona con proyectos dinámicos) ──
+document.querySelector('.filter-tabs')?.addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const f = btn.dataset.filter;
+  document.querySelectorAll('.project-card[data-cat]').forEach(card => {
+    card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
   });
 });
 

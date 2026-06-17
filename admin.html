@@ -6,7 +6,6 @@
 <title>Admin Panel — Andres Escolastico</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ── VARIABLES ── */
 :root {
   --ink:#060C1A; --ink2:#111827; --ink3:#1A2438;
   --blue:#1A56DB; --cyan:#06B6D4; --white:#F0F6FF; --muted:#8899B4;
@@ -33,6 +32,7 @@ button,input,textarea,select{font-family:'DM Sans',sans-serif;}
   color:var(--white);padding:12px 16px;border-radius:11px;font-size:.93rem;
   outline:none;transition:border-color .2s;resize:vertical;
 }
+.input-group select option{background:var(--ink2);color:var(--white);}
 .input-group input:focus,.input-group textarea:focus,.input-group select:focus{border-color:var(--blue);}
 .input-group input::placeholder,.input-group textarea::placeholder{color:rgba(136,153,180,.5);}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -94,58 +94,45 @@ button,input,textarea,select{font-family:'DM Sans',sans-serif;}
 .btn-danger{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#FCA5A5;padding:7px 16px;border-radius:8px;font-size:.78rem;cursor:pointer;margin-top:10px;transition:background .2s;display:inline-flex;align-items:center;gap:5px;}
 .btn-danger:hover{background:rgba(239,68,68,.2);}
 
-/* PROJECTS GRID */
-.admin-projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-bottom:24px;}
-.admin-project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .25s;}
-.admin-project-card:hover{border-color:rgba(26,86,219,.4);}
-.admin-project-card .card-img{width:100%;height:140px;object-fit:cover;display:block;background:var(--ink2);}
-.card-img-placeholder{width:100%;height:140px;display:flex;align-items:center;justify-content:center;background:var(--ink2);font-size:1.8rem;color:var(--muted);}
-.card-body{padding:14px;}
-.card-name{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.card-actions{display:flex;gap:7px;flex-wrap:wrap;}
-.btn-upload-img{background:rgba(26,86,219,.13);border:1px solid rgba(26,86,219,.28);color:#93C5FD;padding:6px 13px;border-radius:7px;font-size:.76rem;font-weight:600;cursor:pointer;transition:background .2s;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:4px;}
-.btn-upload-img input{position:absolute;inset:0;opacity:0;cursor:pointer;}
-.btn-upload-img:hover{background:rgba(26,86,219,.22);}
-.btn-remove-img{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#FCA5A5;padding:6px 12px;border-radius:7px;font-size:.76rem;cursor:pointer;transition:background .2s;}
-.btn-remove-img:hover{background:rgba(239,68,68,.2);}
+/* SHARED LIST ROWS (projects & certs) */
+.admin-list{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.admin-row{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);display:flex;align-items:center;gap:16px;padding:14px;transition:border-color .25s;}
+.admin-row:hover{border-color:rgba(26,86,219,.4);}
+.row-img{width:70px;height:50px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--ink2);}
+.row-img-placeholder{width:70px;height:50px;border-radius:8px;background:rgba(26,86,219,.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+.row-info{flex:1;min-width:0;}
+.row-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.row-meta{font-size:.76rem;color:var(--muted);margin-top:2px;}
+.row-actions{display:flex;gap:7px;flex-shrink:0;}
 
-/* ── CERTS ADMIN ── */
-.certs-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;}
-.btn-add-cert{background:var(--gradient);color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:.87rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:opacity .2s,transform .2s;box-shadow:0 4px 14px rgba(26,86,219,.3);}
-.btn-add-cert:hover{opacity:.88;transform:translateY(-1px);}
-.admin-certs-list{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
-.admin-cert-row{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);display:flex;align-items:center;gap:16px;padding:14px;transition:border-color .25s;}
-.admin-cert-row:hover{border-color:rgba(6,182,212,.35);}
-.cert-row-img{width:70px;height:50px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--ink2);}
-.cert-row-img-placeholder{width:70px;height:50px;border-radius:8px;background:rgba(6,182,212,.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
-.cert-row-info{flex:1;min-width:0;}
-.cert-row-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cert-row-meta{font-size:.76rem;color:var(--muted);margin-top:2px;}
-.cert-row-actions{display:flex;gap:7px;flex-shrink:0;}
-.btn-edit-cert{background:rgba(26,86,219,.12);border:1px solid rgba(26,86,219,.25);color:#93C5FD;padding:6px 13px;border-radius:7px;font-size:.78rem;font-weight:600;cursor:pointer;transition:background .2s;}
-.btn-edit-cert:hover{background:rgba(26,86,219,.22);}
-.btn-delete-cert{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#FCA5A5;padding:6px 12px;border-radius:7px;font-size:.78rem;cursor:pointer;transition:background .2s;}
-.btn-delete-cert:hover{background:rgba(239,68,68,.2);}
-.certs-empty-admin{text-align:center;padding:48px 20px;color:var(--muted);border:1px dashed var(--border);border-radius:var(--radius);}
+/* TOOLBAR */
+.list-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;}
+.btn-add{background:var(--gradient);color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:.87rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:opacity .2s,transform .2s;box-shadow:0 4px 14px rgba(26,86,219,.3);}
+.btn-add:hover{opacity:.88;transform:translateY(-1px);}
+.btn-edit{background:rgba(26,86,219,.12);border:1px solid rgba(26,86,219,.25);color:#93C5FD;padding:6px 13px;border-radius:7px;font-size:.78rem;font-weight:600;cursor:pointer;transition:background .2s;}
+.btn-edit:hover{background:rgba(26,86,219,.22);}
+.btn-delete{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#FCA5A5;padding:6px 12px;border-radius:7px;font-size:.78rem;cursor:pointer;transition:background .2s;}
+.btn-delete:hover{background:rgba(239,68,68,.2);}
+.list-empty{text-align:center;padding:48px 20px;color:var(--muted);border:1px dashed var(--border);border-radius:var(--radius);}
 
-/* ── MODAL ── */
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(4,7,20,.88);backdrop-filter:blur(10px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
-.modal-box{background:var(--ink2);border:1px solid var(--border);border-radius:var(--radius-lg);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;animation:fadeUp .3s ease both;}
+.modal-box{background:var(--ink2);border:1px solid var(--border);border-radius:var(--radius-lg);width:100%;max-width:580px;max-height:90vh;overflow-y:auto;animation:fadeUp .3s ease both;}
 .modal-header{padding:22px 26px 0;display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
 .modal-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;}
 .modal-close{background:rgba(255,255,255,.07);border:1px solid var(--border);color:var(--muted);width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
 .modal-close:hover{background:rgba(255,255,255,.14);color:var(--white);}
 .modal-body{padding:0 26px;}
-.cert-img-upload-area{background:var(--card);border:2px dashed var(--border);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:border-color .2s;position:relative;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.cert-img-upload-area:hover{border-color:var(--blue);}
-.cert-img-upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.cert-modal-preview{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:10px;}
+.img-upload-area{background:var(--card);border:2px dashed var(--border);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:border-color .2s;position:relative;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.img-upload-area:hover{border-color:var(--blue);}
+.img-upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.modal-img-preview{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:10px;}
 .modal-footer{padding:20px 26px 26px;display:flex;gap:10px;justify-content:flex-end;}
 .btn-cancel{background:rgba(255,255,255,.07);border:1px solid var(--border);color:var(--muted);padding:10px 20px;border-radius:9px;font-size:.88rem;cursor:pointer;transition:color .2s;}
 .btn-cancel:hover{color:var(--white);}
-.btn-save-cert{background:var(--gradient);color:#fff;border:none;padding:10px 24px;border-radius:9px;font-size:.88rem;font-weight:600;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 14px rgba(26,86,219,.3);}
-.btn-save-cert:hover{opacity:.88;}
+.btn-save{background:var(--gradient);color:#fff;border:none;padding:10px 24px;border-radius:9px;font-size:.88rem;font-weight:600;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 14px rgba(26,86,219,.3);}
+.btn-save:hover{opacity:.88;}
 
 /* STATUS */
 .status-bar{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.22);color:#6EE7B7;padding:13px 18px;border-radius:12px;font-size:.84rem;font-weight:500;margin-bottom:26px;display:none;align-items:center;gap:8px;}
@@ -153,13 +140,12 @@ button,input,textarea,select{font-family:'DM Sans',sans-serif;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
-/* RESPONSIVE */
 @media(max-width:640px){
   .login-box{padding:36px 22px;}
   .dash-content{padding:24px 4%;}
   .photo-preview-wrap{flex-direction:column;text-align:center;}
   .dash-nav{padding:12px 4%;}
-  .admin-certs-list .cert-row-actions{flex-direction:column;}
+  .row-actions{flex-direction:column;}
   .modal-box{max-height:95vh;}
   .form-row{grid-template-columns:1fr;}
 }
@@ -174,8 +160,7 @@ button,input,textarea,select{font-family:'DM Sans',sans-serif;}
     <div class="login-sub">Panel de administración del portafolio</div>
     <div class="input-group">
       <label>Contraseña</label>
-      <input type="password" id="pwd-input" placeholder="••••••••" autocomplete="current-password"
-        onkeydown="if(event.key==='Enter')doLogin()">
+      <input type="password" id="pwd-input" placeholder="••••••••" autocomplete="current-password">
     </div>
     <button class="btn-login" onclick="doLogin()">Entrar al panel →</button>
     <div class="login-error" id="login-error">❌ Contraseña incorrecta. Inténtalo de nuevo.</div>
@@ -233,32 +218,106 @@ button,input,textarea,select{font-family:'DM Sans',sans-serif;}
 
     <!-- ─── TAB: PROYECTOS ─── -->
     <div class="tab-panel" id="tab-projects">
-      <div class="sec-title">Imágenes de proyectos</div>
-      <p class="sec-sub">Sube una captura de pantalla para cada proyecto. Se mostrarán en las tarjetas del portafolio.</p>
-      <div class="admin-projects-grid" id="projects-grid"></div>
+      <div class="list-toolbar">
+        <div>
+          <div class="sec-title" style="margin-bottom:2px;">Proyectos</div>
+          <p style="color:var(--muted);font-size:.83rem;padding-left:26px;">Agrega, edita o elimina proyectos. Se muestran en el portafolio con sus filtros.</p>
+        </div>
+        <button class="btn-add" onclick="openProjModal()">+ Agregar proyecto</button>
+      </div>
+      <div class="admin-list" id="projects-list"></div>
     </div>
 
     <!-- ─── TAB: CERTIFICADOS ─── -->
     <div class="tab-panel" id="tab-certs">
-      <div class="certs-toolbar">
+      <div class="list-toolbar">
         <div>
           <div class="sec-title" style="margin-bottom:2px;">Certificados</div>
           <p style="color:var(--muted);font-size:.83rem;padding-left:26px;">Agrega, edita o elimina certificados. Se muestran en el portafolio.</p>
         </div>
-        <button class="btn-add-cert" onclick="openCertModal()">+ Agregar certificado</button>
+        <button class="btn-add" onclick="openCertModal()">+ Agregar certificado</button>
       </div>
-      <div class="admin-certs-list" id="certs-list"></div>
+      <div class="admin-list" id="certs-list"></div>
     </div>
 
   </div>
 </div>
 
-<!-- ═══════════════ MODAL: CERT ═══════════════ -->
-<div class="modal-overlay" id="cert-modal-overlay" onclick="handleModalOverlayClick(event)">
+<!-- ═══════════════ MODAL: PROYECTO ═══════════════ -->
+<div class="modal-overlay" id="proj-modal" onclick="handleOverlayClick(event,'proj-modal')">
   <div class="modal-box">
     <div class="modal-header">
-      <div class="modal-title" id="modal-title-text">Agregar certificado</div>
-      <button class="modal-close" onclick="closeCertModal()" aria-label="Cerrar">✕</button>
+      <div class="modal-title" id="proj-modal-title">Agregar proyecto</div>
+      <button class="modal-close" onclick="closeProjModal()">✕</button>
+    </div>
+    <form class="modal-body" id="proj-form" onsubmit="saveProject(event)">
+      <div class="input-group">
+        <label>Título *</label>
+        <input type="text" id="pf-title" required placeholder="Ej: Mi App React" maxlength="120">
+      </div>
+      <div class="input-group">
+        <label>Descripción *</label>
+        <textarea id="pf-desc" rows="3" required placeholder="Describe brevemente el proyecto..." maxlength="400"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="input-group">
+          <label>Categoría (filtro)</label>
+          <select id="pf-cat">
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="system">Sistemas</option>
+            <option value="ai">IA</option>
+            <option value="game">Juego</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Etiqueta del card</label>
+          <input type="text" id="pf-pill" placeholder="Ej: E-commerce" maxlength="40">
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Tecnologías (separadas por coma)</label>
+        <input type="text" id="pf-tags" placeholder="Ej: React, Node.js, CSS3" maxlength="200">
+      </div>
+      <div class="form-row">
+        <div class="input-group">
+          <label>URL en vivo</label>
+          <input type="url" id="pf-live" placeholder="https://mi-proyecto.vercel.app">
+        </div>
+        <div class="input-group">
+          <label>URL GitHub</label>
+          <input type="url" id="pf-github" placeholder="https://github.com/...">
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Imagen del proyecto</label>
+        <div class="img-upload-area" id="proj-img-area"
+          ondragover="dragOver(event,'proj-img-area')"
+          ondragleave="dragLeave('proj-img-area')"
+          ondrop="dropProjImg(event)">
+          <img id="proj-img-preview" class="modal-img-preview" src="" alt="" style="display:none;">
+          <div id="proj-img-placeholder">
+            <div style="font-size:2rem;margin-bottom:6px;">🖼️</div>
+            <div style="font-size:.82rem;color:var(--muted);">Haz clic o arrastra la imagen aquí</div>
+          </div>
+          <input type="file" accept="image/*" onchange="handleProjImg(this.files[0])">
+        </div>
+      </div>
+      <input type="hidden" id="pf-id">
+    </form>
+    <div class="modal-footer">
+      <button type="button" class="btn-cancel" onclick="closeProjModal()">Cancelar</button>
+      <button type="submit" form="proj-form" class="btn-save">Guardar proyecto</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MODAL: CERTIFICADO ═══════════════ -->
+<div class="modal-overlay" id="cert-modal" onclick="handleOverlayClick(event,'cert-modal')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" id="cert-modal-title">Agregar certificado</div>
+      <button class="modal-close" onclick="closeCertModal()">✕</button>
     </div>
     <form class="modal-body" id="cert-form" onsubmit="saveCert(event)">
       <div class="input-group">
@@ -285,23 +344,23 @@ button,input,textarea,select{font-family:'DM Sans',sans-serif;}
       </div>
       <div class="input-group">
         <label>Imagen del certificado</label>
-        <div class="cert-img-upload-area" id="cert-img-area"
+        <div class="img-upload-area" id="cert-img-area"
           ondragover="dragOver(event,'cert-img-area')"
           ondragleave="dragLeave('cert-img-area')"
-          ondrop="dropModalImg(event)">
-          <img id="cert-modal-preview" class="cert-modal-preview" src="" alt="" style="display:none;">
+          ondrop="dropCertImg(event)">
+          <img id="cert-img-preview" class="modal-img-preview" src="" alt="" style="display:none;">
           <div id="cert-img-placeholder">
             <div style="font-size:2rem;margin-bottom:6px;">📜</div>
             <div style="font-size:.82rem;color:var(--muted);">Haz clic o arrastra la imagen aquí</div>
           </div>
-          <input type="file" accept="image/*" id="cf-image-input" onchange="handleModalCertImg(this.files[0])">
+          <input type="file" accept="image/*" onchange="handleCertImg(this.files[0])">
         </div>
       </div>
       <input type="hidden" id="cf-id">
     </form>
     <div class="modal-footer">
       <button type="button" class="btn-cancel" onclick="closeCertModal()">Cancelar</button>
-      <button type="submit" form="cert-form" class="btn-save-cert">Guardar certificado</button>
+      <button type="submit" form="cert-form" class="btn-save">Guardar certificado</button>
     </div>
   </div>
 </div>
@@ -314,36 +373,34 @@ button,input,textarea,select{font-family:'DM Sans',sans-serif;}
    ADMIN PANEL SCRIPT
    ══════════════════════════════════════════ */
 
-// ── PASSWORD (hashed check via simple encoding — keep it safe) ──
-// To change password: update the value of PASS_HASH
-// Current password: andres2026
 const PASS_HASH = btoa('andres2026');
 function checkPass(val){ return btoa(val) === PASS_HASH; }
 
-// ── DEFAULT CERTS (mirrors main.js) ──
+// ── DEFAULT DATA ──
 const DEFAULT_CERTS = [
-  { id:'cert-ia',            title:'Iniciación al Desarrollo con IA',                  issuer:'BIG School',       date:'Oct 2025', hours:'6', desc:'Fundamentos de desarrollo de software usando inteligencia artificial como herramienta de apoyo al código.', image:'assets/img/certificates/cert-ia.png' },
-  { id:'cert-marketing',     title:'Marketing Digital con IA: Estrategia y Visibilidad',issuer:'BIG School · BIGSEO',date:'Abr 2026', hours:'6', desc:'Estrategias de marketing digital potenciadas con inteligencia artificial para maximizar visibilidad online.',  image:'assets/img/certificates/cert-marketing.png' },
-  { id:'cert-ciberseguridad',title:'Ciberseguridad y Hacking Ético',                   issuer:'BIG School',       date:'Abr 2026', hours:'6', desc:'Principios de ciberseguridad, hacking ético, análisis de vulnerabilidades y protección de sistemas.',             image:'assets/img/certificates/cert-ciberseguridad.png' }
+  { id:'cert-ia',            title:'Iniciación al Desarrollo con IA',                   issuer:'BIG School',        date:'Oct 2025', hours:'6', desc:'Fundamentos de desarrollo de software usando inteligencia artificial como herramienta de apoyo al código.',  image:'assets/img/certificates/cert-ia.png' },
+  { id:'cert-marketing',     title:'Marketing Digital con IA: Estrategia y Visibilidad', issuer:'BIG School · BIGSEO',date:'Abr 2026', hours:'6', desc:'Estrategias de marketing digital potenciadas con inteligencia artificial para maximizar visibilidad online.', image:'assets/img/certificates/cert-marketing.png' },
+  { id:'cert-ciberseguridad',title:'Ciberseguridad y Hacking Ético',                    issuer:'BIG School',        date:'Abr 2026', hours:'6', desc:'Principios de ciberseguridad, hacking ético, análisis de vulnerabilidades y protección de sistemas.',           image:'assets/img/certificates/cert-ciberseguridad.png' }
 ];
 
-const PROJECTS = [
-  { key:'boutique',          name:'Super Boutique El-Elyon' },
-  { key:'honda',             name:'Honda Civic 2013 EXL' },
-  { key:'hotel',             name:'Hotel Esco Brea' },
-  { key:'policial',          name:'Sistema Policial RD' },
-  { key:'historias-ia',      name:'Generador de Historias IA' },
-  { key:'tablero',           name:'Tablero Anuncios O&M' },
-  { key:'task-api',          name:'Task Manager API' },
-  { key:'urban',             name:'Urban Collection' },
-  { key:'prank',             name:'Prank Web Suite' },
-  { key:'portafolio-reimin', name:'Portafolio Reimin' },
-  { key:'regalo',            name:'Regalo Sorpresa' },
+const DEFAULT_PROJECTS = [
+  { id:'proj-boutique',          title:'Super Boutique El-Elyon',           desc:'Sitio web profesional para boutique de moda. Diseño moderno, responsive y optimizado para SEO. Indexado en Google Search Console.',           tags:['HTML5','CSS3','JavaScript'],       cat:'frontend', pill:'E-commerce',    live:'https://el-elyon-boutique.vercel.app/',       github:'https://github.com/am399315/megaboutique',         image:'assets/img/projects/boutique.png' },
+  { id:'proj-honda',             title:'Honda Civic 2013 EXL',              desc:'Sitio web moderno y elegante dedicado a un Honda Civic 2013 EXL gris plateado. Galería visual y especificaciones técnicas.',                   tags:['HTML5','CSS3','JavaScript'],       cat:'frontend', pill:'Landing Page',   live:'https://honda-civic-2013-web.vercel.app/',     github:'https://github.com/am399315/honda-civic-2013-web', image:'assets/img/projects/honda.png' },
+  { id:'proj-hotel',             title:'Hotel Esco Brea — Punta Cana',      desc:'Página web completa para hotel en Punta Cana, RD. Sin frameworks externos, siguiendo buenas prácticas de frontend puro.',                     tags:['HTML5','CSS3','JavaScript'],       cat:'frontend', pill:'Hospitality',    live:'https://hotel-esco-brea.vercel.app/',          github:'https://github.com/am399315/hotel-esco-brea',      image:'assets/img/projects/hotel.png' },
+  { id:'proj-policial',          title:'Sistema de Gestión Policial — RD',  desc:'App de escritorio con Electron.js para la Policía Nacional RD. Gestión de casos, detenidos, patrullas, incidentes y estadísticas avanzadas.', tags:['Electron.js','JavaScript','CSS3'], cat:'system',   pill:'Desktop App',   live:'',                                             github:'https://github.com/am399315/sistema-policial-rd',  image:'assets/img/projects/policial.png' },
+  { id:'proj-historias-ia',      title:'Generador de Historias con IA',     desc:'Combina LLM, DALL·E 3 y síntesis de voz para crear historias ilustradas narradas con música de fondo sincronizada.',                          tags:['OpenAI','DALL·E 3','TTS'],         cat:'ai',       pill:'IA Generativa',  live:'',                                             github:'https://github.com/am399315/Proyecto-Final-IA',    image:'assets/img/projects/historias-ia.png' },
+  { id:'proj-tablero',           title:'Tablero de Anuncios — O&M',         desc:'Aplicación React para la comunidad universitaria de O&M. Anuncios digitales en tiempo real para estudiantes y docentes.',                      tags:['React','JavaScript'],              cat:'frontend', pill:'Dashboard',      live:'https://tablero-anuncios-oym.vercel.app/',     github:'https://github.com/am399315/tablero_anuncios_oym', image:'assets/img/projects/tablero.png' },
+  { id:'proj-task-api',          title:'Task Manager API — REST',            desc:'API RESTful para gestión de tareas con CRUD completo. Construida con Node.js y Express siguiendo principios RESTful.',                        tags:['Node.js','Express','REST API'],    cat:'backend',  pill:'Backend',        live:'https://task-api-woad.vercel.app/',            github:'https://github.com/am399315/task-api',             image:'assets/img/projects/task-api.png' },
+  { id:'proj-urban',             title:'Urban Collection — Juego 2D',       desc:'Juego de laberinto 2D con Pygame. Recolecta monedas, evita enemigos inteligentes y supera rondas con dificultad progresiva.',                 tags:['Python','Pygame'],                 cat:'game',     pill:'Videojuego',     live:'',                                             github:'https://github.com/am399315/Urban_Collection',     image:'assets/img/projects/urban.png' },
+  { id:'proj-prank',             title:'Prank Web Suite',                    desc:'Colección de apps interactivas: terminal hacker, pantalla rota, broma WhatsApp y juego imposible. Cada una deployada en Vercel.',             tags:['HTML5','CSS3','JavaScript'],       cat:'frontend', pill:'Creative',        live:'https://hacker-simulator-eight.vercel.app/',   github:'',                                                 image:'assets/img/projects/prank.png' },
+  { id:'proj-portafolio-reimin', title:'Portafolio — Reimin de los Santos', desc:'Portafolio web personal desarrollado para la asignatura de Fundamentos de Seguridad Informática en la Universidad O&M.',                     tags:['HTML5','CSS3','JavaScript'],       cat:'frontend', pill:'Portafolio',      live:'https://portafolio-digital-flame.vercel.app/', github:'https://github.com/am399315/portafolio-digital',   image:'assets/img/projects/portafolio-reimin.png' },
+  { id:'proj-regalo',            title:'Regalo Sorpresa',                    desc:'Experiencia web interactiva y creativa con animaciones JavaScript. Proyecto visual deployado en Vercel.',                                     tags:['HTML5','CSS3','JavaScript'],       cat:'frontend', pill:'Creative',        live:'https://regalo-sorpresa-five.vercel.app/',     github:'',                                                 image:'assets/img/projects/regalo.png' },
 ];
 
 // ── STATE ──
-let state = { photo: null, projects: {}, certsList: [] };
-let modalImageDataUrl = null; // temp storage for cert modal image
+let state = { photo: null, certsList: [], projectsList: [] };
+let projImgTemp = null;
+let certImgTemp = null;
 
 // ── AUTH ──
 function doLogin() {
@@ -352,7 +409,7 @@ function doLogin() {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
     loadState();
-    renderProjects();
+    renderProjectsList();
     renderCertsList();
   } else {
     const err = document.getElementById('login-error');
@@ -384,19 +441,28 @@ function loadState() {
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      state = { photo: null, projects: {}, certsList: [], ...parsed };
-      // Migrate old certs object format to certsList if needed
-      if (!state.certsList || state.certsList.length === 0) {
+      state = { photo: null, certsList: [], projectsList: [], ...parsed };
+
+      if (!state.certsList || state.certsList.length === 0)
         state.certsList = JSON.parse(JSON.stringify(DEFAULT_CERTS));
+
+      if (!state.projectsList || state.projectsList.length === 0) {
+        state.projectsList = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
+        // Migrate old image-map format
+        if (state.projects) {
+          state.projectsList.forEach(p => {
+            const key = p.id.replace('proj-', '');
+            if (state.projects[key]) p.image = state.projects[key];
+          });
+        }
       }
     } catch(e) {
-      state = { photo: null, projects: {}, certsList: JSON.parse(JSON.stringify(DEFAULT_CERTS)) };
+      state = { photo: null, certsList: JSON.parse(JSON.stringify(DEFAULT_CERTS)), projectsList: JSON.parse(JSON.stringify(DEFAULT_PROJECTS)) };
     }
   } else {
-    // First time: seed default certs
-    state.certsList = JSON.parse(JSON.stringify(DEFAULT_CERTS));
+    state.certsList    = JSON.parse(JSON.stringify(DEFAULT_CERTS));
+    state.projectsList = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
   }
-
   if (state.photo) renderPhotoPreview(state.photo, 'Foto guardada');
 }
 
@@ -423,11 +489,7 @@ function handlePhoto(file) {
   if (!file || !file.type.startsWith('image/')) return;
   if (file.size > 4 * 1024 * 1024) { showToast('⚠️ La imagen es muy pesada (máx. 4MB)', true); return; }
   const reader = new FileReader();
-  reader.onload = e => {
-    state.photo = e.target.result;
-    renderPhotoPreview(e.target.result, file.name);
-    showToast('📸 Foto cargada — recuerda guardar');
-  };
+  reader.onload = e => { state.photo = e.target.result; renderPhotoPreview(e.target.result, file.name); showToast('📸 Foto cargada — recuerda guardar'); };
   reader.readAsDataURL(file);
 }
 function renderPhotoPreview(src, name) {
@@ -453,81 +515,159 @@ function removePhoto() {
   showToast('🗑️ Foto eliminada');
 }
 
-// ── PROJECTS ──
-function renderProjects() {
-  const grid = document.getElementById('projects-grid');
-  grid.innerHTML = PROJECTS.map(p => {
-    const img = state.projects[p.key];
-    return `
-      <div class="admin-project-card" id="pcard-${p.key}">
-        ${img ? `<img src="${img}" class="card-img" alt="${p.name}">` : `<div class="card-img-placeholder">🖼️</div>`}
-        <div class="card-body">
-          <div class="card-name" title="${p.name}">${p.name}</div>
-          <div class="card-actions">
-            <label class="btn-upload-img">
-              📁 ${img ? 'Cambiar' : 'Subir imagen'}
-              <input type="file" accept="image/*" onchange="handleProjectImg('${p.key}',this.files[0])">
-            </label>
-            ${img ? `<button class="btn-remove-img" onclick="removeProjectImg('${p.key}')">🗑️</button>` : ''}
-          </div>
-        </div>
-      </div>`;
-  }).join('');
-}
-function handleProjectImg(key, file) {
-  if (!file || !file.type.startsWith('image/')) return;
-  const reader = new FileReader();
-  reader.onload = e => { state.projects[key] = e.target.result; renderProjects(); showToast('✅ Imagen actualizada'); };
-  reader.readAsDataURL(file);
-}
-function removeProjectImg(key) {
-  delete state.projects[key]; renderProjects(); showToast('🗑️ Imagen eliminada');
-}
-
-// ── CERTIFICATES LIST ──
-function renderCertsList() {
-  const list = document.getElementById('certs-list');
-  const certs = state.certsList;
-  if (!certs || certs.length === 0) {
-    list.innerHTML = `<div class="certs-empty-admin">📜 No hay certificados aún. Haz clic en "Agregar certificado" para comenzar.</div>`;
+// ══════════════════════════════════════════
+// ── PROYECTOS CRUD ──
+// ══════════════════════════════════════════
+function renderProjectsList() {
+  const list = document.getElementById('projects-list');
+  const projects = state.projectsList || [];
+  if (projects.length === 0) {
+    list.innerHTML = `<div class="list-empty">🗂️ No hay proyectos. Haz clic en "Agregar proyecto" para comenzar.</div>`;
     return;
   }
-  list.innerHTML = certs.map((c, i) => `
-    <div class="admin-cert-row" id="crow-${c.id}">
-      ${c.image
-        ? `<img src="${c.image}" class="cert-row-img" alt="${c.title}">`
-        : `<div class="cert-row-img-placeholder">📜</div>`}
-      <div class="cert-row-info">
-        <div class="cert-row-title">${c.title}</div>
-        <div class="cert-row-meta">${c.issuer}${c.date ? ' · ' + c.date : ''}${c.hours ? ' · ' + c.hours + ' hrs' : ''}</div>
+  list.innerHTML = projects.map((p, i) => `
+    <div class="admin-row">
+      ${p.image
+        ? `<img src="${p.image}" class="row-img" alt="${p.title}">`
+        : `<div class="row-img-placeholder">🖼️</div>`}
+      <div class="row-info">
+        <div class="row-title">${p.title}</div>
+        <div class="row-meta">${p.pill || ''}${p.cat ? ' · ' + p.cat : ''}${p.live ? ' · 🌐 En vivo' : ''}</div>
       </div>
-      <div class="cert-row-actions">
-        <button class="btn-edit-cert" onclick="openCertModal(${i})">✏️ Editar</button>
-        <button class="btn-delete-cert" onclick="deleteCert(${i})">🗑️ Eliminar</button>
+      <div class="row-actions">
+        <button class="btn-edit" onclick="openProjModal(${i})">✏️ Editar</button>
+        <button class="btn-delete" onclick="deleteProject(${i})">🗑️</button>
       </div>
     </div>
   `).join('');
 }
 
-// ── CERT MODAL ──
-let editingCertIndex = -1;
+let editingProjIdx = -1;
+
+function openProjModal(index) {
+  editingProjIdx = (index !== undefined) ? index : -1;
+  projImgTemp = null;
+  document.getElementById('proj-modal-title').textContent = editingProjIdx >= 0 ? 'Editar proyecto' : 'Agregar proyecto';
+  document.getElementById('proj-form').reset();
+  document.getElementById('pf-id').value = '';
+  document.getElementById('proj-img-preview').style.display = 'none';
+  document.getElementById('proj-img-placeholder').style.display = 'flex';
+
+  if (editingProjIdx >= 0) {
+    const p = state.projectsList[editingProjIdx];
+    document.getElementById('pf-title').value  = p.title  || '';
+    document.getElementById('pf-desc').value   = p.desc   || '';
+    document.getElementById('pf-cat').value    = p.cat    || 'frontend';
+    document.getElementById('pf-pill').value   = p.pill   || '';
+    document.getElementById('pf-tags').value   = Array.isArray(p.tags) ? p.tags.join(', ') : (p.tags || '');
+    document.getElementById('pf-live').value   = p.live   || '';
+    document.getElementById('pf-github').value = p.github || '';
+    document.getElementById('pf-id').value     = p.id     || '';
+    if (p.image) {
+      const prev = document.getElementById('proj-img-preview');
+      prev.src = p.image; prev.style.display = 'block';
+      document.getElementById('proj-img-placeholder').style.display = 'none';
+    }
+  }
+  document.getElementById('proj-modal').classList.add('open');
+  document.getElementById('pf-title').focus();
+}
+
+function closeProjModal() {
+  document.getElementById('proj-modal').classList.remove('open');
+  editingProjIdx = -1; projImgTemp = null;
+}
+
+function handleProjImg(file) {
+  if (!file || !file.type.startsWith('image/')) return;
+  if (file.size > 4 * 1024 * 1024) { showToast('⚠️ Imagen muy pesada (máx. 4MB)', true); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    projImgTemp = e.target.result;
+    const prev = document.getElementById('proj-img-preview');
+    prev.src = projImgTemp; prev.style.display = 'block';
+    document.getElementById('proj-img-placeholder').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function dropProjImg(e) {
+  e.preventDefault(); dragLeave('proj-img-area');
+  handleProjImg(e.dataTransfer.files[0]);
+}
+
+function saveProject(e) {
+  e.preventDefault();
+  const title  = document.getElementById('pf-title').value.trim();
+  const desc   = document.getElementById('pf-desc').value.trim();
+  const cat    = document.getElementById('pf-cat').value;
+  const pill   = document.getElementById('pf-pill').value.trim();
+  const tagsRaw= document.getElementById('pf-tags').value.trim();
+  const live   = document.getElementById('pf-live').value.trim();
+  const github = document.getElementById('pf-github').value.trim();
+  const tags   = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
+
+  if (!title || !desc) { showToast('⚠️ Título y descripción son obligatorios', true); return; }
+
+  if (editingProjIdx >= 0) {
+    const p = state.projectsList[editingProjIdx];
+    Object.assign(p, { title, desc, cat, pill, tags, live, github });
+    if (projImgTemp) p.image = projImgTemp;
+    showToast('✅ Proyecto actualizado');
+  } else {
+    state.projectsList.push({ id: 'proj-' + Date.now(), title, desc, cat, pill, tags, live, github, image: projImgTemp || '' });
+    showToast('✅ Proyecto agregado');
+  }
+  saveAll(); renderProjectsList(); closeProjModal();
+}
+
+function deleteProject(index) {
+  if (!confirm(`¿Eliminar "${state.projectsList[index].title}"?`)) return;
+  state.projectsList.splice(index, 1);
+  saveAll(); renderProjectsList();
+  showToast('🗑️ Proyecto eliminado');
+}
+
+// ══════════════════════════════════════════
+// ── CERTIFICADOS CRUD ──
+// ══════════════════════════════════════════
+function renderCertsList() {
+  const list = document.getElementById('certs-list');
+  const certs = state.certsList || [];
+  if (certs.length === 0) {
+    list.innerHTML = `<div class="list-empty">📜 No hay certificados. Haz clic en "Agregar certificado" para comenzar.</div>`;
+    return;
+  }
+  list.innerHTML = certs.map((c, i) => `
+    <div class="admin-row">
+      ${c.image
+        ? `<img src="${c.image}" class="row-img" alt="${c.title}">`
+        : `<div class="row-img-placeholder">📜</div>`}
+      <div class="row-info">
+        <div class="row-title">${c.title}</div>
+        <div class="row-meta">${c.issuer}${c.date ? ' · ' + c.date : ''}${c.hours ? ' · ' + c.hours + ' hrs' : ''}</div>
+      </div>
+      <div class="row-actions">
+        <button class="btn-edit" onclick="openCertModal(${i})">✏️ Editar</button>
+        <button class="btn-delete" onclick="deleteCert(${i})">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+let editingCertIdx = -1;
 
 function openCertModal(index) {
-  editingCertIndex = (index !== undefined) ? index : -1;
-  modalImageDataUrl = null;
-
-  const title = editingCertIndex >= 0 ? 'Editar certificado' : 'Agregar certificado';
-  document.getElementById('modal-title-text').textContent = title;
-
-  // Reset form
+  editingCertIdx = (index !== undefined) ? index : -1;
+  certImgTemp = null;
+  document.getElementById('cert-modal-title').textContent = editingCertIdx >= 0 ? 'Editar certificado' : 'Agregar certificado';
   document.getElementById('cert-form').reset();
   document.getElementById('cf-id').value = '';
-  document.getElementById('cert-modal-preview').style.display = 'none';
-  document.getElementById('cert-img-placeholder').style.display = 'block';
+  document.getElementById('cert-img-preview').style.display = 'none';
+  document.getElementById('cert-img-placeholder').style.display = 'flex';
 
-  // Populate if editing
-  if (editingCertIndex >= 0) {
-    const c = state.certsList[editingCertIndex];
+  if (editingCertIdx >= 0) {
+    const c = state.certsList[editingCertIdx];
     document.getElementById('cf-title').value  = c.title  || '';
     document.getElementById('cf-issuer').value = c.issuer || '';
     document.getElementById('cf-date').value   = c.date   || '';
@@ -535,37 +675,36 @@ function openCertModal(index) {
     document.getElementById('cf-desc').value   = c.desc   || '';
     document.getElementById('cf-id').value     = c.id     || '';
     if (c.image) {
-      const prev = document.getElementById('cert-modal-preview');
+      const prev = document.getElementById('cert-img-preview');
       prev.src = c.image; prev.style.display = 'block';
       document.getElementById('cert-img-placeholder').style.display = 'none';
     }
   }
-
-  document.getElementById('cert-modal-overlay').classList.add('open');
+  document.getElementById('cert-modal').classList.add('open');
   document.getElementById('cf-title').focus();
 }
 
 function closeCertModal() {
-  document.getElementById('cert-modal-overlay').classList.remove('open');
-  editingCertIndex = -1;
-  modalImageDataUrl = null;
+  document.getElementById('cert-modal').classList.remove('open');
+  editingCertIdx = -1; certImgTemp = null;
 }
 
-function handleModalOverlayClick(e) {
-  if (e.target === document.getElementById('cert-modal-overlay')) closeCertModal();
-}
-
-function handleModalCertImg(file) {
+function handleCertImg(file) {
   if (!file || !file.type.startsWith('image/')) return;
   if (file.size > 4 * 1024 * 1024) { showToast('⚠️ Imagen muy pesada (máx. 4MB)', true); return; }
   const reader = new FileReader();
   reader.onload = e => {
-    modalImageDataUrl = e.target.result;
-    const prev = document.getElementById('cert-modal-preview');
-    prev.src = modalImageDataUrl; prev.style.display = 'block';
+    certImgTemp = e.target.result;
+    const prev = document.getElementById('cert-img-preview');
+    prev.src = certImgTemp; prev.style.display = 'block';
     document.getElementById('cert-img-placeholder').style.display = 'none';
   };
   reader.readAsDataURL(file);
+}
+
+function dropCertImg(e) {
+  e.preventDefault(); dragLeave('cert-img-area');
+  handleCertImg(e.dataTransfer.files[0]);
 }
 
 function saveCert(e) {
@@ -575,66 +714,47 @@ function saveCert(e) {
   const date   = document.getElementById('cf-date').value.trim();
   const hours  = document.getElementById('cf-hours').value.trim();
   const desc   = document.getElementById('cf-desc').value.trim();
-  const existingId = document.getElementById('cf-id').value;
 
   if (!title || !issuer) { showToast('⚠️ Título e institución son obligatorios', true); return; }
 
-  if (editingCertIndex >= 0) {
-    // EDIT existing
-    const cert = state.certsList[editingCertIndex];
-    cert.title  = title;
-    cert.issuer = issuer;
-    cert.date   = date;
-    cert.hours  = hours;
-    cert.desc   = desc;
-    if (modalImageDataUrl) cert.image = modalImageDataUrl;
+  if (editingCertIdx >= 0) {
+    const c = state.certsList[editingCertIdx];
+    Object.assign(c, { title, issuer, date, hours, desc });
+    if (certImgTemp) c.image = certImgTemp;
     showToast('✅ Certificado actualizado');
   } else {
-    // ADD new
-    const newCert = {
-      id:    'cert-' + Date.now(),
-      title, issuer, date, hours, desc,
-      image: modalImageDataUrl || ''
-    };
-    state.certsList.push(newCert);
+    state.certsList.push({ id: 'cert-' + Date.now(), title, issuer, date, hours, desc, image: certImgTemp || '' });
     showToast('✅ Certificado agregado');
   }
-
-  saveAll();
-  renderCertsList();
-  closeCertModal();
+  saveAll(); renderCertsList(); closeCertModal();
 }
 
 function deleteCert(index) {
-  const cert = state.certsList[index];
-  if (!confirm(`¿Eliminar "${cert.title}"?\n\nEsta acción se guardará automáticamente.`)) return;
+  if (!confirm(`¿Eliminar "${state.certsList[index].title}"?`)) return;
   state.certsList.splice(index, 1);
-  saveAll();
-  renderCertsList();
+  saveAll(); renderCertsList();
   showToast('🗑️ Certificado eliminado');
 }
 
 // ── DRAG & DROP ──
 function dragOver(e, id) { e.preventDefault(); document.getElementById(id)?.classList.add('drag'); }
 function dragLeave(id)    { document.getElementById(id)?.classList.remove('drag'); }
-
 function dropFile(e, type) {
-  e.preventDefault();
-  const id = type === 'photo' ? 'photo-zone' : 'cert-zone';
-  dragLeave(id);
-  const files = e.dataTransfer.files;
-  if (type === 'photo') handlePhoto(files[0]);
+  e.preventDefault(); dragLeave('photo-zone');
+  if (type === 'photo') handlePhoto(e.dataTransfer.files[0]);
 }
 
-function dropModalImg(e) {
-  e.preventDefault();
-  dragLeave('cert-img-area');
-  handleModalCertImg(e.dataTransfer.files[0]);
+// ── MODAL OVERLAY CLICK ──
+function handleOverlayClick(e, id) {
+  if (e.target === document.getElementById(id)) {
+    if (id === 'proj-modal') closeProjModal();
+    else closeCertModal();
+  }
 }
 
 // ── KEYBOARD SHORTCUTS ──
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeCertModal();
+  if (e.key === 'Escape') { closeProjModal(); closeCertModal(); }
   if ((e.ctrlKey || e.metaKey) && e.key === 's') {
     e.preventDefault();
     if (document.getElementById('dashboard').style.display !== 'none') saveAll();
