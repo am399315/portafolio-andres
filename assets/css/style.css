@@ -807,21 +807,28 @@ a, button {
   }
   .nav-backdrop.open { display: block; }
 
-  /* Panel — z-index por encima del nav bar (500) */
+  /* Panel — siempre display:flex, position:fixed desde el inicio */
   .nav-links {
-    display: none; flex-direction: column; gap: 0;
+    display: flex; flex-direction: column; gap: 0;
     position: fixed; top: 0; right: 0; bottom: 0; width: 82%;
     max-width: 320px;
     background: linear-gradient(160deg, #0b1628 0%, #0d1c36 100%);
     border-left: 1px solid rgba(26,86,219,0.22);
     padding: 0 0 40px;
     z-index: 501;
+    visibility: hidden;
     transform: translateX(110%);
-    transition: transform 0.34s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.34s cubic-bezier(0.4,0,0.2,1),
+                visibility 0s linear 0.34s;
     overflow-y: auto;
     box-shadow: -8px 0 40px rgba(0,0,0,0.6);
   }
-  .nav-links.open { display: flex; transform: translateX(0); }
+  .nav-links.open {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform 0.34s cubic-bezier(0.4,0,0.2,1),
+                visibility 0s linear 0s;
+  }
 
   /* Header decorativo del panel */
   .nav-links::before {

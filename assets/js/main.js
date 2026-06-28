@@ -342,14 +342,10 @@ const navLinks    = document.getElementById('nav-links');
 const navBackdrop = document.getElementById('nav-backdrop');
 
 function openMenu() {
-  // display:flex primero, luego en el sig. frame activar la transición
-  navLinks.style.display = 'flex';
-  requestAnimationFrame(() => {
-    navLinks.classList.add('open');
-    hamburger.classList.add('open');
-    navBackdrop.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
+  navLinks.classList.add('open');
+  hamburger.classList.add('open');
+  navBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeMenu() {
@@ -357,10 +353,6 @@ function closeMenu() {
   hamburger.classList.remove('open');
   navBackdrop.classList.remove('open');
   document.body.style.overflow = '';
-  // Ocultar después de que termina la transición
-  navLinks.addEventListener('transitionend', () => {
-    navLinks.style.display = 'none';
-  }, { once: true });
 }
 
 hamburger.addEventListener('click', () => {
