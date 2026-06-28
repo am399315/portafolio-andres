@@ -339,20 +339,23 @@ document.querySelector('.filter-tabs')?.addEventListener('click', e => {
 // ── HAMBURGER ──
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('nav-links');
+const navBackdrop = document.getElementById('nav-backdrop');
+
 hamburger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
   hamburger.classList.toggle('open');
-  navLinks.classList.toggle('open');
+  navBackdrop.classList.toggle('open');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
+
 function closeMenu() {
   hamburger.classList.remove('open');
   navLinks.classList.remove('open');
+  navBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
 }
-// Close on outside click
-document.addEventListener('click', e => {
-  if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-    closeMenu();
-  }
-});
+
+navBackdrop.addEventListener('click', closeMenu);
 
 // ── NAVBAR SCROLL + ACTIVE SECTION ──
 const navbar  = document.getElementById('navbar');
