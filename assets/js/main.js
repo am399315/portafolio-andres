@@ -418,6 +418,7 @@ function initTerminal() {
     div.className = 't-line';
     div.innerHTML = html;
     body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
   }
 
   function processNext() {
@@ -449,6 +450,7 @@ function initTerminal() {
       div.className = 't-line';
       div.innerHTML = '<span class="t-prompt">❯</span> <span class="t-cmd-text"></span><span class="t-caret">█</span>';
       body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
 
       const textSpan = div.querySelector('.t-cmd-text');
       const caret    = div.querySelector('.t-caret');
