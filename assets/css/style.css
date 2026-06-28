@@ -124,7 +124,13 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.4); }
   -webkit-text-fill-color: transparent; background-clip: text;
   text-decoration: none; letter-spacing: -0.02em;
 }
-.nav-links { display: flex; gap: 24px; list-style: none; }
+/* Desktop: fixed al top-right del viewport, mismo lugar visual que antes */
+.nav-links {
+  display: flex; gap: 24px; list-style: none;
+  position: fixed; top: 0; right: 6%;
+  height: 52px; align-items: center;
+  z-index: 501;
+}
 .nav-links a {
   color: var(--muted); text-decoration: none;
   font-size: 0.875rem; font-weight: 500;
@@ -804,37 +810,32 @@ a, button {
   /* ── NAV MOBILE ── */
   .hamburger { display: flex; }
 
-  /* Backdrop — z-index BELOW the nav bar so el hamburger queda clickeable */
+  /* Backdrop: debajo del nav (500) para que hamburger siga clickeable */
   .nav-backdrop {
     display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    z-index: 498;
+    background: rgba(0,0,0,0.55);
+    z-index: 499;
   }
   .nav-backdrop.open { display: block; }
 
-  /* Panel — siempre display:flex, position:fixed desde el inicio */
+  /* Panel */
   .nav-links {
     display: flex; flex-direction: column; gap: 0;
-    position: fixed; top: 0; right: 0; bottom: 0; width: 82%;
-    max-width: 320px;
-    background: linear-gradient(160deg, #0b1628 0%, #0d1c36 100%);
+    position: fixed; top: 0; right: 0;
+    height: 100%; width: 82%; max-width: 320px;
+    background: #0b1628;
     border-left: 1px solid rgba(26,86,219,0.22);
     padding: 0 0 40px;
-    z-index: 501;
-    visibility: hidden;
-    transform: translateX(110%);
-    transition: transform 0.34s cubic-bezier(0.4,0,0.2,1),
-                visibility 0s linear 0.34s;
+    z-index: 9999;
+    transform: translateX(100%);
+    pointer-events: none;
+    transition: transform 0.3s ease;
     overflow-y: auto;
-    box-shadow: -8px 0 40px rgba(0,0,0,0.6);
+    box-shadow: -4px 0 24px rgba(0,0,0,0.5);
   }
   .nav-links.open {
-    visibility: visible;
     transform: translateX(0);
-    transition: transform 0.34s cubic-bezier(0.4,0,0.2,1),
-                visibility 0s linear 0s;
+    pointer-events: auto;
   }
 
   /* Header decorativo del panel */
