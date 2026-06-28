@@ -361,6 +361,13 @@ hamburger.addEventListener('click', () => {
 
 navBackdrop.addEventListener('click', closeMenu);
 
+// Desbloquear body si menú queda abierto al pasar a desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768 && navLinks.classList.contains('open')) {
+    closeMenu();
+  }
+});
+
 // ── NAVBAR SCROLL + ACTIVE SECTION ──
 const navbar  = document.getElementById('navbar');
 const sections = document.querySelectorAll('section[id]');
