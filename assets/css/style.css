@@ -124,12 +124,9 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.4); }
   -webkit-text-fill-color: transparent; background-clip: text;
   text-decoration: none; letter-spacing: -0.02em;
 }
-/* Desktop: fixed al top-right del viewport, mismo lugar visual que antes */
+/* Desktop: flex item normal dentro del nav */
 .nav-links {
   display: flex; gap: 24px; list-style: none;
-  position: fixed; top: 0; right: 6%;
-  height: 52px; align-items: center;
-  z-index: 501;
 }
 .nav-links a {
   color: var(--muted); text-decoration: none;
@@ -818,11 +815,11 @@ a, button {
   }
   .nav-backdrop.open { display: block; }
 
-  /* Panel */
+  /* Panel mobile */
   .nav-links {
     display: flex; flex-direction: column; gap: 0;
     position: fixed; top: 0; right: 0;
-    height: 100%; width: 82%; max-width: 320px;
+    height: 100vh; width: 82%; max-width: 320px;
     background: #0b1628;
     border-left: 1px solid rgba(26,86,219,0.22);
     padding: 0 0 40px;
