@@ -64,6 +64,15 @@ function loadAdminData() {
     if (img) img.src = state.photo;
   }
 
+  // CV button — use uploaded PDF from admin if available
+  if (state.cv && state.cv.data) {
+    const btn = document.querySelector('.btn-cv');
+    if (btn) {
+      btn.href = state.cv.data;
+      btn.download = state.cv.filename || 'CV-Andres-Escolastico.pdf';
+    }
+  }
+
   // Projects — new projectsList format with fallback + migration from old image-map format
   let projects;
   if (state.projectsList && state.projectsList.length > 0) {

@@ -214,6 +214,30 @@ button,input,textarea,select{font-family:'DM Sans',sans-serif;}
         <div class="uz-sub">o haz clic para seleccionarla · PNG, JPG — máx. 3MB recomendado</div>
         <div class="uz-btn">Seleccionar imagen</div>
       </div>
+
+      <!-- CV -->
+      <div class="sec-title" style="margin-top:36px;">Currículum (CV)</div>
+      <p class="sec-sub">Sube tu CV en PDF. El botón "↓ CV" del portafolio lo descargará directamente.</p>
+
+      <div class="photo-preview-wrap" id="cv-preview-wrap" style="display:none;">
+        <div style="font-size:2.5rem;flex-shrink:0;">📄</div>
+        <div class="photo-info">
+          <h3 id="cv-filename">CV cargado</h3>
+          <p id="cv-desc">Listo para descargar desde el portafolio.</p>
+          <button class="btn-danger" onclick="removeCV()">🗑️ Eliminar CV</button>
+        </div>
+      </div>
+
+      <div class="upload-zone" id="cv-zone"
+        ondragover="dragOver(event,'cv-zone')"
+        ondragleave="dragLeave('cv-zone')"
+        ondrop="dropFile(event,'cv')">
+        <input type="file" accept="application/pdf" onchange="handleCV(this.files[0])">
+        <span class="uz-icon">📄</span>
+        <div class="uz-title">Arrastra tu CV aquí</div>
+        <div class="uz-sub">Solo archivos PDF · máx. 5MB recomendado</div>
+        <div class="uz-btn">Seleccionar PDF</div>
+      </div>
     </div>
 
     <!-- ─── TAB: PROYECTOS ─── -->
@@ -398,7 +422,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // ── STATE ──
-let state = { photo: null, certsList: [], projectsList: [] };
+let state = { photo: null, certsList: [], projectsList: [], cv: null };
 let projImgTemp = null;
 let certImgTemp = null;
 
@@ -464,6 +488,7 @@ function loadState() {
     state.projectsList = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
   }
   if (state.photo) renderPhotoPreview(state.photo, 'Foto guardada');
+  if (state.cv && state.cv.data) renderCVPreview(state.cv.filename || 'CV cargado');
 }
 
 function saveAll() {
@@ -736,12 +761,37 @@ function deleteCert(index) {
   showToast('🗑️ Certificado eliminado');
 }
 
+// ── CV ──
+function handleCV(file) {
+  if (!file || file.type !== 'application/pdf') { showToast('⚠️ Solo se aceptan archivos PDF', true); return; }
+  if (file.size > 6 * 1024 * 1024) { showToast('⚠️ El PDF es muy pesado (máx. 6MB)', true); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    state.cv = { data: e.target.result, filename: file.name };
+    renderCVPreview(file.name);
+    showToast('📄 CV cargado — recuerda guardar');
+  };
+  reader.readAsDataURL(file);
+}
+function renderCVPreview(name) {
+  document.getElementById('cv-preview-wrap').style.display = 'flex';
+  document.getElementById('cv-filename').textContent = name || 'CV cargado';
+  document.getElementById('cv-zone').style.display = 'none';
+}
+function removeCV() {
+  state.cv = null;
+  document.getElementById('cv-preview-wrap').style.display = 'none';
+  document.getElementById('cv-zone').style.display = 'block';
+  showToast('🗑️ CV eliminado');
+}
+
 // ── DRAG & DROP ──
 function dragOver(e, id) { e.preventDefault(); document.getElementById(id)?.classList.add('drag'); }
 function dragLeave(id)    { document.getElementById(id)?.classList.remove('drag'); }
 function dropFile(e, type) {
-  e.preventDefault(); dragLeave('photo-zone');
-  if (type === 'photo') handlePhoto(e.dataTransfer.files[0]);
+  e.preventDefault();
+  if (type === 'photo') { dragLeave('photo-zone'); handlePhoto(e.dataTransfer.files[0]); }
+  else if (type === 'cv') { dragLeave('cv-zone'); handleCV(e.dataTransfer.files[0]); }
 }
 
 // ── MODAL OVERLAY CLICK ──

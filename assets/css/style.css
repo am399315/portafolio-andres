@@ -216,6 +216,8 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.4); }
   background: var(--gradient);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
+  padding-right: 0.12em;
 }
 .hero-sub {
   color: var(--muted); font-size: 1rem;
