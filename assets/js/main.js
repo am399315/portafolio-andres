@@ -101,6 +101,11 @@ function renderProjects(projects) {
   grid.innerHTML = projects.map(p => {
     const tags = Array.isArray(p.tags) ? p.tags : String(p.tags || '').split(',').map(t => t.trim()).filter(Boolean);
     const tagsHtml = tags.map(t => `<span class="project-tag">${t}</span>`).join('');
+
+    // Status badge — derived from live/github or explicit p.status
+    const status = p.status || (p.live ? 'En producción' : (p.github ? 'Disponible' : 'Demo'));
+    const statusClass = p.live ? 'status-prod' : (p.github ? 'status-demo' : 'status-dev');
+
     return `
       <div class="project-card" data-cat="${p.cat || 'frontend'}">
         <div class="project-banner">
@@ -110,12 +115,15 @@ function renderProjects(projects) {
           <span class="cat-pill">${p.pill || ''}</span>
         </div>
         <div class="project-body">
-          <div class="project-tags">${tagsHtml}</div>
+          <div class="project-meta-row">
+            <div class="project-tags">${tagsHtml}</div>
+            <span class="project-status ${statusClass}">${status}</span>
+          </div>
           <div class="project-title">${p.title}</div>
           <div class="project-desc">${p.desc || ''}</div>
           <div class="project-footer">
-            ${p.live   ? `<a href="${p.live}"   target="_blank" rel="noopener" class="project-link">🌐 Ver en vivo →</a>` : ''}
-            ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener" class="project-link gh">GitHub</a>`        : ''}
+            ${p.live   ? `<a href="${p.live}"   target="_blank" rel="noopener" class="project-link">🌐 Ver demo →</a>` : ''}
+            ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener" class="project-link gh">Ver código</a>`  : ''}
           </div>
         </div>
       </div>`;
@@ -205,14 +213,17 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 function animateCounter(el) {
   const target = parseInt(el.dataset.count, 10);
   const suffix = el.dataset.suffix || '';
+  // Fallback: show final value immediately so it never stays at 0
+  el.textContent = target + suffix;
   const duration = 1400;
   const start = performance.now();
   const update = (now) => {
     const elapsed = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - elapsed, 3); // ease-out cubic
+    const eased = 1 - Math.pow(1 - elapsed, 3);
     const current = Math.round(eased * target);
     el.textContent = current + suffix;
     if (elapsed < 1) requestAnimationFrame(update);
+    else el.textContent = target + suffix; // ensure exact final value
   };
   requestAnimationFrame(update);
 }
@@ -230,12 +241,12 @@ document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(
 
 // ── TYPING ANIMATION ──
 const TYPED_STRINGS = [
-  'Ing. en Sistemas',
   'Full Stack Developer',
+  'Soluciones Web a Medida',
   'React & Node.js Dev',
-  'Backend · APIs · REST',
-  'AI Integration Dev',
-  'Open to Work 🚀'
+  'APIs · IA · Automatización',
+  'Ing. en Sistemas',
+  '¿Tienes un proyecto? 🚀'
 ];
 let typedIndex = 0, charIndex = 0, isDeleting = false;
 const typedEl = document.getElementById('hero-typed');

@@ -1125,3 +1125,212 @@ a, button {
   .footer-top { gap: 22px; padding: 32px 4% 22px; }
   .footer-bottom { padding: 14px 4%; }
 }
+
+/* ══════════════════════════════════════════
+   UPGRADE v3 — PROFESSIONAL PORTFOLIO
+   ══════════════════════════════════════════ */
+
+/* ── PROJECT CARDS v2 ── */
+.project-meta-row {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 8px;
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+.project-meta-row .project-tags { margin-bottom: 0; }
+.project-status {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 3px 10px; border-radius: 100px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.project-status::before { content: '●'; font-size: 0.48rem; }
+.status-prod { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #6EE7B7; }
+.status-demo { background: rgba(26,86,219,0.12);  border: 1px solid rgba(26,86,219,0.3);  color: #93C5FD; }
+.status-dev  { background: rgba(245,158,11,0.1);  border: 1px solid rgba(245,158,11,0.25); color: #FCD34D; }
+.project-link-gh-label { display: none; }
+
+/* ── ESPECIALIDADES ── */
+#especialidades { padding: 100px 0; position: relative; z-index: 1; }
+.especialidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+}
+.esp-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.esp-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gradient); transform: scaleX(0);
+  transform-origin: left; transition: transform 0.3s ease;
+}
+.esp-card:hover {
+  border-color: rgba(26,86,219,0.42); transform: translateY(-5px);
+  box-shadow: var(--glow-blue);
+}
+.esp-card:hover::before { transform: scaleX(1); }
+.esp-icon { font-size: 1.75rem; margin-bottom: 14px; display: block; }
+.esp-title {
+  font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+  margin-bottom: 8px; line-height: 1.3;
+}
+.esp-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.6; }
+
+/* ── CASOS DE ÉXITO ── */
+#casos-exito { padding: 100px 0; position: relative; z-index: 1; }
+.casos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.caso-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: flex; flex-direction: column; gap: 0;
+}
+.caso-card:hover {
+  border-color: rgba(26,86,219,0.5); transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(26,86,219,0.14);
+}
+.caso-header {
+  display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px;
+}
+.caso-icon { font-size: 2rem; flex-shrink: 0; line-height: 1.1; }
+.caso-cat {
+  font-size: 0.67rem; font-weight: 700; color: var(--cyan);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px;
+}
+.caso-title {
+  font-family: 'Syne', sans-serif; font-size: 1.02rem; font-weight: 700; line-height: 1.3;
+}
+.caso-body { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; flex: 1; }
+.caso-row { display: grid; grid-template-columns: 76px 1fr; gap: 8px; align-items: start; }
+.caso-label {
+  font-size: 0.67rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted); padding-top: 2px;
+}
+.caso-row p { color: var(--muted); font-size: 0.84rem; line-height: 1.62; margin: 0; }
+.caso-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.caso-tag {
+  background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2);
+  color: #67E8F9; padding: 3px 10px; border-radius: 6px;
+  font-size: 0.7rem; font-weight: 500;
+}
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  position: relative; z-index: 1;
+  background: linear-gradient(135deg, rgba(26,86,219,0.08) 0%, rgba(6,182,212,0.05) 100%);
+  border-top: 1px solid rgba(26,86,219,0.18);
+  border-bottom: 1px solid rgba(26,86,219,0.18);
+  padding: 52px 0;
+}
+.cta-strip-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 8%;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.cta-strip-text { flex: 1; min-width: 200px; }
+.cta-strip-text strong {
+  display: block; font-family: 'Syne', sans-serif;
+  font-size: 1.22rem; font-weight: 700; margin-bottom: 6px;
+}
+.cta-strip-text span { color: var(--muted); font-size: 0.9rem; }
+
+/* ── PROCESO ── */
+#proceso { padding: 100px 0; position: relative; z-index: 1; }
+.proceso-steps { display: flex; flex-direction: column; }
+.paso {
+  display: grid; grid-template-columns: 72px 1fr;
+  gap: 0 32px; align-items: start;
+  padding: 30px 18px; border-bottom: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background 0.22s, border-color 0.22s;
+}
+.paso:last-child { border-bottom: none; }
+.paso:hover { background: rgba(26,86,219,0.05); border-color: rgba(26,86,219,0.2); }
+.paso-num {
+  font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800;
+  background: var(--gradient); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1; padding-top: 4px; display: inline-block;
+}
+.paso-title {
+  font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700;
+  margin-bottom: 8px; padding-top: 4px;
+}
+.paso-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.72; }
+
+/* ── TESTIMONIOS ── */
+#testimonios { padding: 100px 0; position: relative; z-index: 1; }
+.testimonios-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; margin-bottom: 20px;
+}
+.testimonio-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 30px;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.testimonio-card:hover {
+  border-color: rgba(26,86,219,0.4); transform: translateY(-5px);
+  box-shadow: var(--glow-blue);
+}
+.test-quote {
+  font-family: 'Syne', sans-serif; font-size: 3.2rem; line-height: 0.85;
+  font-weight: 800; background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; display: inline-block;
+  margin-bottom: 16px; opacity: 0.6;
+}
+.test-text {
+  color: var(--muted); font-size: 0.9rem; line-height: 1.78;
+  margin-bottom: 24px; font-style: italic;
+}
+.test-author { display: flex; align-items: center; gap: 12px; }
+.test-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gradient); display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 0.74rem; font-weight: 800;
+  color: #fff; flex-shrink: 0; letter-spacing: 0.02em;
+}
+.test-name { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; }
+.test-role { color: var(--muted); font-size: 0.74rem; margin-top: 2px; }
+.test-disclaimer {
+  text-align: center; color: var(--muted); font-size: 0.74rem;
+  opacity: 0.5; font-style: italic; margin-top: 8px;
+}
+
+/* ── RESPONSIVE — secciones nuevas v3 ── */
+@media (max-width: 1024px) {
+  .casos-grid { gap: 18px; }
+  .caso-row { grid-template-columns: 68px 1fr; }
+}
+
+@media (max-width: 768px) {
+  #especialidades, #casos-exito, #proceso, #testimonios { padding: 64px 0; }
+  .especialidades-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .casos-grid { grid-template-columns: 1fr; }
+  .caso-row { grid-template-columns: 64px 1fr; }
+  .testimonios-grid { grid-template-columns: 1fr; }
+  .cta-strip { padding: 40px 0; }
+  .cta-strip-inner { flex-direction: column; align-items: flex-start; gap: 20px; padding: 0 5%; }
+  .cta-strip-text strong { font-size: 1.05rem; }
+  .paso { grid-template-columns: 58px 1fr; gap: 0 20px; padding: 22px 10px; }
+  .paso-num { font-size: 1.9rem; }
+  .paso-desc { font-size: 0.86rem; }
+}
+
+@media (max-width: 480px) {
+  #especialidades, #casos-exito, #proceso, #testimonios { padding: 52px 0; }
+  .especialidades-grid { grid-template-columns: 1fr; gap: 10px; }
+  .esp-card { padding: 18px 16px; }
+  .caso-row { grid-template-columns: 1fr; gap: 2px; }
+  .caso-label { display: inline-block; margin-bottom: 2px; }
+  .caso-card { padding: 20px; }
+  .paso { grid-template-columns: 48px 1fr; gap: 0 14px; padding: 20px 8px; }
+  .paso-num { font-size: 1.65rem; }
+  .cta-strip-inner { padding: 0 4%; }
+  .testimonio-card { padding: 22px; }
+}
