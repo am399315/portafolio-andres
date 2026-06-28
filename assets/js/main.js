@@ -337,23 +337,35 @@ document.querySelector('.filter-tabs')?.addEventListener('click', e => {
 });
 
 // ── HAMBURGER ──
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('nav-links');
+const hamburger   = document.getElementById('hamburger');
+const navLinks    = document.getElementById('nav-links');
 const navBackdrop = document.getElementById('nav-backdrop');
 
-hamburger.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open');
-  navBackdrop.classList.toggle('open');
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
+function openMenu() {
+  // display:flex primero, luego en el sig. frame activar la transición
+  navLinks.style.display = 'flex';
+  requestAnimationFrame(() => {
+    navLinks.classList.add('open');
+    hamburger.classList.add('open');
+    navBackdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+}
 
 function closeMenu() {
-  hamburger.classList.remove('open');
   navLinks.classList.remove('open');
+  hamburger.classList.remove('open');
   navBackdrop.classList.remove('open');
   document.body.style.overflow = '';
+  // Ocultar después de que termina la transición
+  navLinks.addEventListener('transitionend', () => {
+    navLinks.style.display = 'none';
+  }, { once: true });
 }
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.contains('open') ? closeMenu() : openMenu();
+});
 
 navBackdrop.addEventListener('click', closeMenu);
 
